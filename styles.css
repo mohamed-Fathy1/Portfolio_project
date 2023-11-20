@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: all 0.2s ease-in-out;
 }
 
 body {
@@ -16,11 +15,17 @@ header {
     justify-content: center;
     align-items: center;
     background-color: #F2F2F2;
+    position: relative;
 }
 
 header .logo {
     position: absolute;
     left: 20px;
+}
+
+.editable {
+    transition: border-radius 0.2s ease-in-out,
+    margin 0.2s ease-in-out;
 }
 
 header nav {
@@ -73,6 +78,7 @@ header span button {
     cursor: pointer;
     transition: border-radius 0.2s ease-in-out;
 }
+
 header span button:hover,
 header span button:focus {
     border-radius: 10px;
