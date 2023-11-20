@@ -2,10 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.2s ease-in-out;
 }
 
 body {
-    background-color: #F2F2F2;
+    background-color: #000;
     font-family: Matter, Helvetica, sans-serif;
 }
 
@@ -14,6 +15,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F2F2F2;
 }
 
 header .logo {
@@ -82,4 +84,13 @@ section {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #F2F2F2;
+}
+
+footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F2F2F2;
 }
