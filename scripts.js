@@ -1,14 +1,18 @@
+let edit = false;
+
+function selectedText () {
+}
 
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
     const editables = document.querySelectorAll('.editable');
-    if (this.innerHTML === 'Edit') {
+    if (edit === false) {
       const margin = '1rem';
       const radius = '20px';
 
       this.innerHTML = 'Done';
+      edit = true;
       editables.forEach((ele, index) => {
-        console.log(ele);
         if (index === 0) {
           ele.style.margin = `0px ${margin} ${margin}`;
           ele.style.borderRadius = `0px 0px ${radius} ${radius}`;
@@ -21,6 +25,7 @@ function toggleEdite () {
         }
       });
     } else {
+      edit = false;
       editables.forEach((ele) => {
         this.innerHTML = 'Edit';
         ele.style.margin = '0px';
