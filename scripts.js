@@ -1,6 +1,37 @@
 let edit = false;
 
-function selectedText () {
+function editText () {
+  document.querySelectorAll('.text').forEach((ele) => {
+    ele.addEventListener('click', function () {
+      console.log(this);
+      const input = this.lastElementChild;
+      const text = this.innerText;
+      const textEle = this.firstElementChild;
+      const width = textEle.offsetWidth;
+      const height = textEle.offsetHeight;
+
+      const fontFamily = textEle.style.fontFamily;
+      console.log(fontFamily);
+
+      let fontSize = window.getComputedStyle(textEle, null).getPropertyValue('font-size');
+      fontSize = parseFloat(fontSize);
+      console.log(fontSize);
+      let fontWeight = window.getComputedStyle(textEle, null).getPropertyValue('font-weight');
+      fontWeight = parseFloat(fontWeight);
+      console.log(fontWeight);
+      input.value = text;
+      // input.style.height = `${height}px`;
+      input.style.fontSize = `${fontSize}px`;
+      input.style.fontWeight = fontWeight;
+      input.style.width = input.value.length + 'ch';
+      input.addEventListener('input', function () {
+        this.style.width = this.value.length + 'ch';
+      });
+      textEle.style.display = 'none';
+      input.style.display = 'block';
+      input.focus();
+    });
+  });
 }
 
 function toggleEdite () {
@@ -37,4 +68,5 @@ function toggleEdite () {
 
 window.onload = function () {
   toggleEdite();
+  selectedText();
 };

@@ -102,6 +102,12 @@ footer {
 }
 
 
-.text:has(h1) input {
-
+.text > h1 + input{
+    display: none;
+    /* font-size: inherit; */
+    /* font-weight: 900; */
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #000;
 }
