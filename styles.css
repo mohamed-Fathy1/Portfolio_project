@@ -102,6 +102,18 @@ footer {
 }
 
 
+.text {
+    min-width: 300px;
+}
+
+input {
+    border: '1px solid #000000' !important;
+}
+
+.text > * {
+    margin: 10px 0;
+}
+
 .text > h1 + input{
     display: none;
     /* font-size: inherit; */

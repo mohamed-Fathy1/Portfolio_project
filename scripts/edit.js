@@ -1,32 +1,19 @@
 let edit = false;
 
-function desableEditText () {
-  document.querySelectorAll('.text').forEach((ele) => {
-    if (edit === false) {
-      ele.removeEventListener('click', textEdtingEvent);
-      const input = ele.lastElementChild;
-      const textEle = ele.firstElementChild;
-      textEle.innerText = input.value;
-      input.style.display = 'none';
-      textEle.style.display = 'block';
-      input.blur();
-      input.disabled = true;
-    }
-  });
-}
-
 function textEdtingEvent (ele) {
+  // if (edit === false) {
+  //   return;
+  // }
+  console.log('textEdtingEvent');
   const input = ele.lastElementChild;
   // check if input is already focused
-  console.log(document.activeElement);
-  if (input === document.activeElement) {
-    return;
-  }
-  console.log('clickeddd');
+  // if (input === document.activeElement || input.disabled === false) {
+  //   console.log('already focused');
+  //   return;
+  // }
   const text = ele.innerText;
   const textEle = ele.firstElementChild;
-  console.log(ele);
-  const height = textEle.offsetHeight;
+  // const height = textEle.offsetHeight;
 
   let fontFamily = window.getComputedStyle(textEle, null).getPropertyValue('font-family');
   fontFamily = fontFamily.replace(/['"]+/g, '');
@@ -36,15 +23,27 @@ function textEdtingEvent (ele) {
   let fontWeight = window.getComputedStyle(textEle, null).getPropertyValue('font-weight');
   fontWeight = parseFloat(fontWeight);
   input.value = text;
-  input.style.height = `${height}px`;
+  // input.style.height = `${height}px`;
   input.style.fontSize = `${fontSize}px`;
   input.style.fontWeight = fontWeight;
-  input.style.width = input.value.length + 'ch';
+  input.style.width = (input.value.length + 10) + 'ch';
   input.style.fontFamily = fontFamily;
   // add border
-  input.style.border = '2px solid black';
+  input.addEventListener('focus', function () {
+    if (edit === true) {
+      ele.style.outline = '2px solid #000';
+      ele.style.borderRadius = '10px';
+    }
+  });
   input.addEventListener('input', function () {
     this.style.width = this.value.length + 'ch';
+    // textEle.innerText = input.value;
+  });
+  input.addEventListener('blur', function () {
+    if (edit === false) {
+      this.style.outline = 'none';
+      this.style.borderRadius = '0px';
+    }
   });
   textEle.style.display = 'none';
   input.style.display = 'block';
@@ -52,11 +51,35 @@ function textEdtingEvent (ele) {
   input.focus();
 }
 
+function disableEditText () {
+  if (edit === false) {
+    document.querySelectorAll('.text').forEach((ele) => {
+      // ele.removeEventListener('click', textEdtingEvent);
+      const input = ele.lastElementChild;
+      const textEle = ele.firstElementChild;
+      if (input.value === '') {
+        textEle.innerText = input.placeholder;
+      } else {
+        textEle.innerText = input.value;
+      }
+      input.style.display = 'none';
+      textEle.style.display = 'block';
+      input.blur();
+      input.disabled = true;
+      console.log('disabled');
+    });
+  }
+}
+
 function enableEditText () {
   document.querySelectorAll('.text').forEach((ele) => {
+    console.log(ele.lastElementChild);
+    console.log(ele.lastElementChild.disabled);
     if (edit === true) {
-      ele.addEventListener('click', () => textEdtingEvent(ele));
+      console.log('enableEditText');
+      textEdtingEvent(ele);
     }
+    console.log('enabled');
   });
 }
 
@@ -89,7 +112,7 @@ function toggleEdite () {
         ele.style.margin = '0px';
         ele.style.borderRadius = '0px';
       });
-      desableEditText();
+      disableEditText();
     }
   };
 }
