@@ -1,0 +1,13 @@
+section {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F2F2F2;
+}
+
+.text input {
+    outline: 1px solid #000000 !important;
+    padding: 10px;
+}
