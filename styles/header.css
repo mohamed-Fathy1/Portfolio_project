@@ -17,14 +17,13 @@ header nav {
     border-radius: 32px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #121212;
-    padding: 1rem 28px;
+    padding: 1rem 1px;
 }
 
 header nav ul {
     display: flex;
     justify-content: justify-content;
     align-items: center;
-    /* gap: 28px; */
 }
 
 header nav ul li {
@@ -33,12 +32,25 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 13px;
     color: #000;
     font-weight: 900;
     padding: 1rem 28px;
     transition: border-radius 0.2s ease-in-out;
 }
+
+header nav ul li {
+    margin: 0 -7px;
+}
+
+header nav ul li:first-child {
+    margin-left: 0;
+}
+
+header nav ul li:last-child {
+    margin-right: 0;
+}
+
 
 header nav ul li a:hover,
 header nav ul li a:focus {

@@ -30,25 +30,25 @@ function textEdtingEvent (ele) {
   input.style.fontFamily = fontFamily;
   // add border
   input.addEventListener('focus', function () {
-    if (edit === true) {
-      ele.style.outline = '2px solid #000';
-      ele.style.borderRadius = '10px';
-    }
+    ele.style.outline = '2px solid #000';
+    ele.style.borderRadius = '10px';
+    console.log(input.placeholder);
+    console.log(input.value);
+    if (input.placeholder == input.value) { input.value = ''; }
   });
   input.addEventListener('input', function () {
     this.style.width = this.value.length + 'ch';
     // textEle.innerText = input.value;
   });
   input.addEventListener('blur', function () {
-    if (edit === false) {
-      this.style.outline = 'none';
-      this.style.borderRadius = '0px';
+    if (edit === true) {
+      ele.style.outline = 'none';
+      ele.style.borderRadius = '0px';
     }
   });
   textEle.style.display = 'none';
   input.style.display = 'block';
   input.disabled = false;
-  input.focus();
 }
 
 function disableEditText () {
