@@ -1,10 +1,7 @@
-let edit = false;
-
 function textEdtingEvent (ele) {
   // if (edit === false) {
   //   return;
   // }
-  console.log('textEdtingEvent');
   const input = ele.lastElementChild;
   // check if input is already focused
   // if (input === document.activeElement || input.disabled === false) {
@@ -32,8 +29,6 @@ function textEdtingEvent (ele) {
   input.addEventListener('focus', function () {
     ele.style.outline = '2px solid #000';
     ele.style.borderRadius = '10px';
-    console.log(input.placeholder);
-    console.log(input.value);
     if (input.placeholder == input.value) { input.value = ''; }
   });
   input.addEventListener('input', function () {
@@ -41,7 +36,7 @@ function textEdtingEvent (ele) {
     // textEle.innerText = input.value;
   });
   input.addEventListener('blur', function () {
-    if (edit === true) {
+    if (window.edit === true) {
       ele.style.outline = 'none';
       ele.style.borderRadius = '0px';
     }
@@ -52,7 +47,7 @@ function textEdtingEvent (ele) {
 }
 
 function disableEditText () {
-  if (edit === false) {
+  if (window.edit === false) {
     document.querySelectorAll('.text').forEach((ele) => {
       // ele.removeEventListener('click', textEdtingEvent);
       const input = ele.lastElementChild;
@@ -66,32 +61,27 @@ function disableEditText () {
       textEle.style.display = 'block';
       input.blur();
       input.disabled = true;
-      console.log('disabled');
     });
   }
 }
 
 function enableEditText () {
   document.querySelectorAll('.text').forEach((ele) => {
-    console.log(ele.lastElementChild);
-    console.log(ele.lastElementChild.disabled);
-    if (edit === true) {
-      console.log('enableEditText');
+    if (window.edit === true) {
       textEdtingEvent(ele);
     }
-    console.log('enabled');
   });
 }
 
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
     const editables = document.querySelectorAll('.editable');
-    if (edit === false) {
+    if (window.edit === false) {
       const margin = '1rem';
       const radius = '20px';
 
       this.innerHTML = 'Done';
-      edit = true;
+      window.edit = true;
       editables.forEach((ele, index) => {
         if (index === 0) {
           ele.style.margin = `0px ${margin} ${margin}`;
@@ -106,7 +96,7 @@ function toggleEdite () {
       });
       enableEditText();
     } else {
-      edit = false;
+      window.edit = false;
       this.innerHTML = 'Edit';
       editables.forEach((ele) => {
         ele.style.margin = '0px';
@@ -117,6 +107,4 @@ function toggleEdite () {
   };
 }
 
-window.onload = function () {
-  toggleEdite();
-};
+export { toggleEdite };
