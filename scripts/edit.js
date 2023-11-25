@@ -1,4 +1,4 @@
-import { enableEditText, disableEditText } from './editText.js';
+import { enableEditText, disableEditText, toggleEditDropdown } from './editText.js';
 
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
@@ -22,6 +22,7 @@ function toggleEdite () {
         }
       });
       enableEditText();
+      toggleEditDropdown();
     } else {
       window.edit = false;
       this.innerHTML = 'Edit';

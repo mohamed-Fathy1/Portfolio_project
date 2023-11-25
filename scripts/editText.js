@@ -1,3 +1,26 @@
+function toggleEditDropdown () {
+  const btn = document.querySelectorAll('.text-dropbtn');
+  btn.forEach((ele) => {
+    ele.addEventListener('click', function () {
+      const nexSibling = this.nextElementSibling;
+      const parent = this.parentElement;
+      console.log(parent);
+      console.log(nexSibling);
+      if (nexSibling.style.display === 'block') {
+        parent.style.overflow = 'hidden';
+        nexSibling.style.display = 'none';
+        nexSibling.style.top = '0%';
+        // nexSibling.style.left = '0px';
+      } else {
+        parent.style.overflow = 'visible';
+        nexSibling.style.display = 'block';
+        nexSibling.style.top = '100%';
+        // nexSibling.style.left = this.offsetLeft + 'px';
+      }
+    });
+  });
+}
+
 function textEdtingEvent (ele) {
   // if (edit === false) {
   //   return;
@@ -73,4 +96,4 @@ function enableEditText () {
   });
 }
 
-export { disableEditText, enableEditText };
+export { disableEditText, enableEditText, toggleEditDropdown };
