@@ -19,19 +19,32 @@ function appendOrEnableEditText () {
 }
 
 function enableEditdropdown () {
-  const nexSibling = this.nextElementSibling;
+  const nextSibling = this.nextElementSibling;
   const parent = this.parentElement;
 
-  if (nexSibling.style.visibility === 'visible') {
+  const rect = parent.getBoundingClientRect();
+  const spaceBelow = window.innerHeight - rect.bottom;
+  const spaceAbove = rect.top;
+
+  if (spaceBelow >= spaceAbove) {
+    // If there is more space below, show the dropdown below the button
+    nextSibling.style.top = '100%';
+    nextSibling.style.bottom = 'auto';
+  } else {
+    // If there is more space above, show the dropdown above the button
+    nextSibling.style.top = 'auto';
+    nextSibling.style.bottom = '100%';
+  }
+
+  // Toggle visibility and overflow
+  if (nextSibling.style.visibility === 'visible') {
     parent.style.overflow = 'hidden';
-    nexSibling.style.top = '0%';
-    nexSibling.style.visibility = 'hidden';
-    nexSibling.style.opacity = '0';
+    nextSibling.style.visibility = 'hidden';
+    nextSibling.style.opacity = '0';
   } else {
     parent.style.overflow = 'visible';
-    nexSibling.style.top = '100%';
-    nexSibling.style.visibility = 'visible';
-    nexSibling.style.opacity = '1';
+    nextSibling.style.visibility = 'visible';
+    nextSibling.style.opacity = '1';
   }
 }
 

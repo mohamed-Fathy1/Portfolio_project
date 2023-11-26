@@ -65,9 +65,8 @@
 }
 
 .costumize-text-dropdown .text-dropdown-content {
-    /* display: none; */
     position: absolute;
-    top: 40%;
+    /* top: 40%; */
     visibility: hidden;
     opacity: 0;
     background-color: #F2F2F2;
@@ -83,7 +82,10 @@
 }
 
 .text-dropdown-content ul li {
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     cursor: pointer;
@@ -91,9 +93,4 @@
 
 .text-dropdown-content ul li:hover {
     background-color: #ddd;
-}
-
-.text-dropdown-content ul li a {
-    text-decoration: none;
-    color: #000;
 }
