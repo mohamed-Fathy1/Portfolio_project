@@ -29,6 +29,7 @@
 }
 
 .costumize-text-dropdown {
+    diplsay: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -43,9 +44,11 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     z-index: 999;
     overflow: hidden;
+    transition: all 0.2s ease-in-out;
 }
 
 .costumize-text-dropdown button {
+    display: none;
     position: relative;
     padding: 10px;
     border: none;
@@ -62,15 +65,17 @@
 }
 
 .costumize-text-dropdown .text-dropdown-content {
-    display: none;
+    /* display: none; */
     position: absolute;
     top: 40%;
+    visibility: hidden;
+    opacity: 0;
     background-color: #F2F2F2;
     min-width: 160px;
     border-radius: 0.25rem;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
     z-index: -1;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .text-dropdown-content ul {

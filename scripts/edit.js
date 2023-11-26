@@ -1,4 +1,4 @@
-import { enableEditText, disableEditText, toggleEditDropdown } from './editText.js';
+import { enableEditText, disableEditText, toggleEditDropdown, appendOrEnableEditText } from './editText.js';
 
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
@@ -22,6 +22,7 @@ function toggleEdite () {
         }
       });
       enableEditText();
+      appendOrEnableEditText();
       toggleEditDropdown();
     } else {
       window.edit = false;
@@ -31,6 +32,8 @@ function toggleEdite () {
         ele.style.borderRadius = '0px';
       });
       disableEditText();
+      appendOrEnableEditText();
+      toggleEditDropdown();
     }
   };
 }
