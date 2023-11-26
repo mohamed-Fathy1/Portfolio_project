@@ -1,5 +1,34 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
 
+function enableEditDropdownSub () {
+  const ele = this.lastElementChild;
+
+  const rect = this.getBoundingClientRect();
+  const spaceBelow = window.innerHeight - rect.bottom;
+  const spaceAbove = rect.top;
+
+  if (spaceBelow >= spaceAbove) {
+    // If there is more space below, show the dropdown below the button
+    ele.style.top = '0%';
+    ele.style.bottom = 'auto';
+  } else {
+    // If there is more space above, show the dropdown above the button
+    ele.style.top = 'auto';
+    ele.style.bottom = '0%';
+  }
+
+  // Toggle visibility and overflow
+  if (ele.style.visibility === 'visible') {
+    this.style.overflow = 'hidden';
+    ele.style.visibility = 'hidden';
+    ele.style.opacity = '0';
+  } else {
+    this.style.overflow = 'visible';
+    ele.style.visibility = 'visible';
+    ele.style.opacity = '1';
+  }
+}
+
 function appendOrEnableEditText () {
   let text = document.querySelectorAll('.costumize-text-dropdown');
   if (text.length === 0) {
@@ -41,10 +70,20 @@ function enableEditdropdown () {
     parent.style.overflow = 'hidden';
     nextSibling.style.visibility = 'hidden';
     nextSibling.style.opacity = '0';
+    const subDropdown = nextSibling.querySelectorAll('li');
+    subDropdown.forEach((ele) => {
+      ele.removeEventListener('mouseenter', enableEditDropdownSub);
+      ele.removeEventListener('mouseleave', enableEditDropdownSub);
+    });
   } else {
     parent.style.overflow = 'visible';
     nextSibling.style.visibility = 'visible';
     nextSibling.style.opacity = '1';
+    const subDropdown = nextSibling.querySelectorAll('li');
+    subDropdown.forEach((ele) => {
+      ele.addEventListener('mouseenter', enableEditDropdownSub);
+      ele.addEventListener('mouseleave', enableEditDropdownSub);
+    });
   }
 }
 
