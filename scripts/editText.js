@@ -1,5 +1,12 @@
+import { createTextDropdownComponent } from './components/editTextDropdown.js';
+
 function appendOrEnableEditText () {
-  const text = document.querySelectorAll('.costumize-text-dropdown');
+  let text = document.querySelectorAll('.costumize-text-dropdown');
+  if (text.length === 0) {
+    console.log('created');
+    createTextDropdownComponent();
+    text = document.querySelectorAll('.costumize-text-dropdown');
+  }
   text.forEach((ele) => {
     if (window.edit === true) {
       ele.style.display = 'block';
@@ -32,23 +39,29 @@ function clearEditDropdown (e) {
   const btn = document.querySelectorAll('.text-dropbtn');
   const dropdown = document.querySelectorAll('.text-dropdown-content');
   const parent = document.querySelectorAll('.costumize-text-dropdown');
-  let flag = false;
+  const flag = false;
   for (let i = 0; i < btn.length; i++) {
-    if (btn[i].contains(e.target) || dropdown[i].contains(e.target)) {
-      flag = true;
-      break;
-    }
-  }
-  if (flag === false) {
-    for (let i = 0; i < dropdown.length; i++) {
+    if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target)) {
       if (dropdown[i].style.visibility === 'visible') {
         parent[i].style.overflow = 'hidden';
         dropdown[i].style.top = '0%';
         dropdown[i].style.visibility = 'hidden';
         dropdown[i].style.opacity = '0';
       }
+      // flag = true;
+      // break;
     }
   }
+  // if (flag === false) {
+  //   for (let i = 0; i < dropdown.length; i++) {
+  //     if (dropdown[i].style.visibility === 'visible') {
+  //       parent[i].style.overflow = 'hidden';
+  //       dropdown[i].style.top = '0%';
+  //       dropdown[i].style.visibility = 'hidden';
+  //       dropdown[i].style.opacity = '0';
+  //     }
+  //   }
+  // }
 }
 
 function toggleEditDropdown () {
