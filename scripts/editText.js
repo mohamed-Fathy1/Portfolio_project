@@ -6,6 +6,18 @@ function enableEditDropdownSub () {
   const rect = this.getBoundingClientRect();
   const spaceBelow = window.innerHeight - rect.bottom;
   const spaceAbove = rect.top;
+  const spaceLeft = rect.left;
+  const spaceRight = window.innerWidth - rect.right;
+
+  if (spaceRight >= spaceLeft) {
+    // If there is more space to the right, show the dropdown to the right of the button
+    ele.style.left = '100%';
+    ele.style.right = 'auto';
+  } else {
+    // If there is more space to the left, show the dropdown to the left of the button
+    ele.style.left = 'auto';
+    ele.style.right = '100%';
+  }
 
   if (spaceBelow >= spaceAbove) {
     // If there is more space below, show the dropdown below the button
