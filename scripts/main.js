@@ -1,6 +1,8 @@
+import { createTextComponent } from './components/text.js';
 import { toggleEdite } from './edit.js';
 
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
   window.edit = false;
+  createTextComponent('Hello World');
   toggleEdite();
-};
+});
