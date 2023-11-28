@@ -1,7 +1,7 @@
 function createColorPicker (id) {
   const pickr = Pickr.create({
     el: id,
-    theme: 'classic', // or 'monolith', or 'nano'
+    theme: 'nano', // or 'monolith', or 'nano'
     useAsButton: true,
 
     swatches: [
@@ -36,8 +36,8 @@ function createColorPicker (id) {
         hsva: true,
         cmyk: true,
         input: true,
-        clear: true,
-        save: true
+        clear: false,
+        save: false
       }
     }
   });
