@@ -45,6 +45,7 @@ function appendOrEnableEditText () {
   let text = document.querySelectorAll('.costumize-text-dropdown');
   if (text.length === 0) {
     console.log('created');
+    // create a unique id for each dropdown
     createTextDropdownComponent();
     text = document.querySelectorAll('.costumize-text-dropdown');
   }
