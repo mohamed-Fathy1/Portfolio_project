@@ -1,3 +1,9 @@
+import { textStyleSubDropdown } from './textStyleSubDropdown.js';
+import { backgroundStyleSubDropdown } from './backgroundStyleSubDropdown.js';
+import { borderStyleSubDropdown } from './borderStyleSubDropdown.js';
+import { spacingAndAlignmentSubDropdown } from './spacingAndAlignmentSubDropdown.js';
+import { textDecorationsSubDropdown } from './textDecorationSubDropdown.js';
+
 function createColorPicker (id) {
   const pickr = Pickr.create({
     el: id,
@@ -49,6 +55,13 @@ function createTextDropdownComponent () {
   const container = document.querySelectorAll('.text-container');
   const items = ['Text Style', 'Background Style', 'Border Style',
     'Spacing and Alignment', 'Text Decoration'];
+  const componentDict = {
+    'Text Style': textStyleSubDropdown,
+    'Background Style': backgroundStyleSubDropdown,
+    'Border Style': borderStyleSubDropdown,
+    'Spacing and Alignment': spacingAndAlignmentSubDropdown,
+    'Text Decoration': textDecorationsSubDropdown
+  };
 
   container.forEach((ele, index) => {
     const randomId = Math.random().toString(36).substr(2, 9);
@@ -61,23 +74,7 @@ function createTextDropdownComponent () {
         <div class="text-dropdown-content">
             <ul>
                 ${items.map((item, index) => `<li>${item}<i class="fa-solid fa-caret-right"></i>
-                    <div class="text-dropdown-content-sub">
-                        <label for="fontSize-${index}-${randomId}">Font Size (px):</label>
-                        <input type="number" id="fontSize-${index}-${randomId}" value="16">
-
-                        <label for="fontColor-${index}-${randomId}">Font Color:</label>
-                        <div class="color-picker" id="color-picker-${index}-${randomId}"></div>
-
-                        <label for="fontWeight-${index}-${randomId}">Bold:</label>
-                        <input type="checkbox" id="fontWeight-${index}-${randomId}">
-
-                        <label for="fontFamily-${index}-${randomId}">Font Family:</label>
-                        <select id="fontFamily-${index}-${randomId}">
-                            <option value="Arial, sans-serif">Arial</option>
-                            <option value="'Times New Roman', serif">Times New Roman</option>
-                            <option value="'Courier New', monospace">Courier New</option>
-                        </select>
-                    </div>
+                    ${componentDict[item](index, randomId)}
                 </li>`).join('')}
             </ul>
         </div>
@@ -95,7 +92,6 @@ function createTextDropdownComponent () {
         const pickrObject = document.querySelector(colorPickerId);
         const input = document.querySelector(`#text-${randomId}`).lastElementChild;
         pickr.on('change', (color, instance) => {
-          // console.log(color.toRGBA().toString());
           input.style.color = color.toRGBA().toString();
           pickrObject.style.backgroundColor = color.toRGBA().toString();
         });
