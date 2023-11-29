@@ -191,18 +191,6 @@ function textEdtingEvent (ele) {
   //   this.parentElement.firstElementChild.style.display = 'none';
   // });
 
-  const observer = new MutationObserver(function (mutations) {
-    console.log(mutations);
-    mutations.forEach(function (mutationRecord) {
-      console.log('style changed!');
-      console.log(mutationRecord);
-      console.log(input.parentElement.firstElementChild);
-      const cssText = input.attributes.style;
-      input.parentElement.firstElementChild.attributes.style.value = cssText.value;
-      // input.parentElement.firstElementChild.style.display = 'none';
-    });
-  });
-
   observer.observe(input, { attributes: true, attributeFilter: ['style'] });
 
   textEle.style.display = 'none';
