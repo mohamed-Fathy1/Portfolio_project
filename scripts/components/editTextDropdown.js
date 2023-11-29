@@ -1,12 +1,12 @@
 import { textStyleSubDropdown } from './textStyleSubDropdown.js';
 import { backgroundStyleSubDropdown } from './backgroundStyleSubDropdown.js';
-import { borderStyleSubDropdown } from './borderStyleSubDropdown.js';
+import { borderStyleSubDropdown, changeBorderWidth } from './borderStyleSubDropdown.js';
 import { spacingAndAlignmentSubDropdown } from './spacingAndAlignmentSubDropdown.js';
 import { textDecorationsSubDropdown } from './textDecorationSubDropdown.js';
 
 function createColorPicker (id) {
   const pickr = Pickr.create({
-    el: id,
+    el: `#${id}`,
     theme: 'nano', // or 'monolith', or 'nano'
     useAsButton: true,
 
@@ -85,15 +85,30 @@ function createTextDropdownComponent () {
 
     items.forEach((item, index) => {
     // Assuming you want to create a color picker for each element
-      const colorPickerId = `#color-picker-${index}-${randomId}`;
+      const fontColorId = `#fontColor-${index}-${randomId}`;
+      const backgroundColorId = `#backgroundColor-${index}-${randomId}`;
+      const borderColorId = `#borderColor-${index}-${randomId}`;
+      const textDecorationColorId = `#textDecorationColor-${index}-${randomId}`;
+      const colorPickerId = [fontColorId, backgroundColorId, borderColorId, textDecorationColorId];
+
       if (document.querySelector(colorPickerId)) {
-        // console.log(colorPickerId);
-        const pickr = createColorPicker(colorPickerId);
+        const item = document.querySelector(colorPickerId);
+
+        const pickr = createColorPicker(item.id);
         const pickrObject = document.querySelector(colorPickerId);
         const input = document.querySelector(`#text-${randomId}`).lastElementChild;
         pickr.on('change', (color, instance) => {
-          input.style.color = color.toRGBA().toString();
           pickrObject.style.backgroundColor = color.toRGBA().toString();
+          const instancID = pickr._root.button.id;
+          if (instancID.includes('fontColor')) {
+            input.style.color = color.toRGBA().toString();
+          } else if (instancID.includes('backgroundColor')) {
+            input.style.backgroundColor = color.toRGBA().toString();
+          } else if (instancID.includes('borderColor')) {
+            input.style.borderColor = color.toRGBA().toString();
+          } else if (instancID.includes('textDecorationColor')) {
+            input.style.textDecorationColor = color.toRGBA().toString();
+          }
         });
         pickrObject.style.backgroundColor = window.getComputedStyle(input, null).getPropertyValue('color');
       }

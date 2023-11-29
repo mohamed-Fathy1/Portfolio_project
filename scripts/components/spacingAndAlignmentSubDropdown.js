@@ -8,6 +8,7 @@ function spacingAndAlignmentSubDropdown (index, randomId) {
                         <input type="number" id="padding-${index}-${randomId}" value="1" min="1" max="10" step="1">
 
                         <label for="margin-${index}-${randomId}">Margin:</label>
+                        <input type="number" id="margin-${index}-${randomId}" value="1" min="1" max="10" step="1">
 
 
                         <label for="textAlign-${index}-${randomId}">Text Align:</label>
