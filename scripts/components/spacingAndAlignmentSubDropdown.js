@@ -1,4 +1,39 @@
+function changelineHeight (target, randomId) {
+  const text = document.getElementById(`text-${randomId}`).lastElementChild;
+  text.style.lineHeight = target.value;
+}
+
+function changePadding (inputElement, randomId) {
+  const text = document.getElementById(`text-${randomId}`).lastElementChild;
+  const inputValue = inputElement.value + 'px';
+  text.style.padding = inputValue;
+}
+
+function changeMargin (inputElement, randomId) {
+  const text = document.getElementById(`text-${randomId}`).lastElementChild;
+  const inputValue = inputElement.value + 'px';
+  text.style.margin = inputValue;
+}
+
+function changeTextAlign (target, randomId) {
+  const text = document.getElementById(`text-${randomId}`).lastElementChild;
+  text.style.textAlign = target.value;
+}
+
 function spacingAndAlignmentSubDropdown (index, randomId) {
+  document.getElementById(`text-container-${randomId}`).addEventListener('change', function (event) {
+    const target = event.target;
+
+    if (target.id.startsWith('lineHeight')) {
+      changelineHeight(target, randomId);
+    } else if (target.id.startsWith('padding')) {
+      changePadding(target, randomId);
+    } else if (target.id.startsWith('margin')) {
+      changeMargin(target, randomId);
+    } else if (target.id.startsWith('textAlign')) {
+      changeTextAlign(target, randomId);
+    }
+  });
   return (`
                     <div class="text-dropdown-content-sub" id="text-dropdown-content-sub-${index}-${randomId}">
                         <label for="lineHeight-${index}-${randomId}">Line Height:</label>
