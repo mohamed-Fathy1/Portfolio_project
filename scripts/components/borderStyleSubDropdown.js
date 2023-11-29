@@ -1,6 +1,10 @@
 function changeBorderStyle (e, randomId) {
   const text = document.getElementById(`text-${randomId}`).lastElementChild;
   text.style.borderStyle = e.value;
+  const styles = window.getComputedStyle(text);
+  const cssText = text.attributes.style;
+  document.getElementById(`text-${randomId}`).firstElementChild.attributes.style.value = cssText.value;
+  document.getElementById(`text-${randomId}`).firstElementChild.style.display = 'none';
 }
 
 function changeBorderWidth (inputElement, randomId) {

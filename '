@@ -106,8 +106,7 @@ function clearEditDropdown (e) {
   const parent = document.querySelectorAll('.costumize-text-dropdown');
   const flag = false;
   for (let i = 0; i < btn.length; i++) {
-    if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target)) {
-      if (dropdown[i].style.visibility === 'visible') {
+    if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target)) {      if (dropdown[i].style.visibility === 'visible') {
         parent[i].style.overflow = 'hidden';
         dropdown[i].style.top = '0%';
         dropdown[i].style.visibility = 'hidden';
@@ -184,27 +183,6 @@ function textEdtingEvent (ele) {
       ele.style.borderRadius = '0px';
     }
   });
-  // input.addEventListener('change', function () {
-  //   console.log(this.parentElement.firstElementChild);
-  //   const cssText = this.attributes.style;
-  //   this.parentElement.firstElementChild.attributes.style.value = cssText.value;
-  //   this.parentElement.firstElementChild.style.display = 'none';
-  // });
-
-  const observer = new MutationObserver(function (mutations) {
-    console.log(mutations);
-    mutations.forEach(function (mutationRecord) {
-      console.log('style changed!');
-      console.log(mutationRecord);
-      console.log(input.parentElement.firstElementChild);
-      const cssText = input.attributes.style;
-      input.parentElement.firstElementChild.attributes.style.value = cssText.value;
-      // input.parentElement.firstElementChild.style.display = 'none';
-    });
-  });
-
-  observer.observe(input, { attributes: true, attributeFilter: ['style'] });
-
   textEle.style.display = 'none';
   input.style.display = 'block';
   input.disabled = false;
