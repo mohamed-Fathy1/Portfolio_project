@@ -1,4 +1,5 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
+import { observer } from './MutationObserver.js';
 
 function enableEditDropdownSub () {
   const ele = this.lastElementChild;
