@@ -202,7 +202,8 @@ function textEdtingEvent (ele) {
 function disableEditText () {
   if (window.edit === false) {
     document.querySelectorAll('.text').forEach((ele) => {
-      // ele.removeEventListener('click', textEdtingEvent);
+      ele.removeEventListener('click', textEdtingEvent);
+      observer.disconnect();
       const input = ele.lastElementChild;
       const textEle = ele.firstElementChild;
       if (input.value === '') {
