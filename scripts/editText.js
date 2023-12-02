@@ -1,5 +1,5 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
-import { observer } from './MutationObserver.js';
+import { styleObserver } from './styleObserver.js';
 
 function enableEditDropdownSub () {
   const ele = this.lastElementChild;
@@ -193,7 +193,7 @@ function textEdtingEvent (ele) {
   //   this.parentElement.firstElementChild.style.display = 'none';
   // });
 
-  observer.observe(input, { attributes: true, attributeFilter: ['style'] });
+  styleObserver.observe(input, { attributes: true, attributeFilter: ['style'] });
 
   textEle.style.display = 'none';
   input.style.display = 'block';
@@ -204,7 +204,7 @@ function disableEditText () {
   if (window.edit === false) {
     document.querySelectorAll('.text').forEach((ele) => {
       ele.removeEventListener('click', textEdtingEvent);
-      observer.disconnect();
+      styleObserver.disconnect();
       const input = ele.lastElementChild;
       const textEle = ele.firstElementChild;
       if (input.value === '') {

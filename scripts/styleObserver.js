@@ -1,5 +1,4 @@
-const observer = new MutationObserver(function (mutations) {
-  console.log('style changed!');
+const styleObserver = new MutationObserver(function (mutations) {
   if (mutations[0].target.style.display === 'none') {
     return;
   }
@@ -12,4 +11,4 @@ const observer = new MutationObserver(function (mutations) {
   // });
 });
 
-export { observer };
+export { styleObserver };
