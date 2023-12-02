@@ -105,9 +105,10 @@ function clearEditDropdown (e) {
   const btn = document.querySelectorAll('.text-dropbtn');
   const dropdown = document.querySelectorAll('.text-dropdown-content');
   const parent = document.querySelectorAll('.costumize-text-dropdown');
-  const flag = false;
+  const colorPicker = document.querySelectorAll('.pcr-app');
+  // const flag = false;
   for (let i = 0; i < btn.length; i++) {
-    if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target)) {
+    if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target) && !parent[i].contains(e.target) && ![...colorPicker].some(ele => ele.contains(e.target))) {
       if (dropdown[i].style.visibility === 'visible') {
         parent[i].style.overflow = 'hidden';
         dropdown[i].style.top = '0%';
