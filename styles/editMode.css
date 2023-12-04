@@ -1,0 +1,20 @@
+
+main .new-section {
+    display: none;
+    min-height: 100px;
+    max-height: 200px;
+    max-width: 1049px;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+    psition: relative;
+    margin: 0 auto !important;
+    border: 1px solid #ccc;
+    transform: scale(0.7);
+    transform: translateY(-20%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease-in-out !important;
+    /* z-index: -0; */
+}

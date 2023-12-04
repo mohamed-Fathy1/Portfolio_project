@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="styles/footer.css" />
     <link rel="stylesheet" href="styles/text.css" />
     <link rel="stylesheet" href="styles/dropDown.css" />
+    <link rel="stylesheet" href="styles/editMode.css" />
+    <link rel="stylesheet" href="styles/createNewSection.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -79,12 +81,39 @@
         <!--     <div class="text-container"> -->
         <!--     </div> -->
         <!-- </section> -->
+        <section class="editable new-section" id="new-section">
+            <i class="fa-solid fa-plus"></i>
+        </section>
+
     </main>
 
-    <footer class="editable">
-        <!-- <div class="text-container"> -->
-        <!-- </div> -->
+    <footer class="editable" style="height: 20vh;">
+        <div class="text-container">
+        </div>
     </footer>
+
+    <div class="new-section-popup">
+        <div class="new-section-popup__container">
+            <ul>
+                <li><input type="checkbox" name="hero" id="hero" value="hero"><label for="hero">Hero</label></li>
+                <li><input type="checkbox" name="about" id="about" value="about"><label for="about">About</label></li>
+                <li><input type="checkbox" name="contact" id="contact" value="contact"><label
+                        for="contact">Contact</label></li>
+                <li><input type="checkbox" name="projects" id="projects" value="projects"><label
+                        for="projects">Projects</label></li>
+                <li><input type="checkbox" name="blogs" id="blogs" value="blogs"><label for="blogs">Blogs</label></li>
+                <li><input type="checkbox" name="testimonials" id="testimonials" value="testimonials"><label
+                        for="testimonials">Testimonials</label></li>
+                <li><input type="checkbox" name="footer" id="footer" value="footer"><label for="footer">Footer</label>
+                </li>
+            </ul>
+            <div class="new-section-popup__buttons">
+                <button id="cancel-section">Cancel</button>
+                <button id="create-section">Create</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

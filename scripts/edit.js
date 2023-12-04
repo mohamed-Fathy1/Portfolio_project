@@ -1,4 +1,5 @@
 import { enableEditText, disableEditText, toggleEditDropdown, appendOrEnableEditText } from './editText.js';
+import { createSection } from './createSection.js';
 
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
@@ -21,6 +22,7 @@ function toggleEdite () {
           ele.style.borderRadius = radius;
         }
       });
+      createSection();
       enableEditText();
       appendOrEnableEditText();
       toggleEditDropdown();
@@ -34,6 +36,7 @@ function toggleEdite () {
       disableEditText();
       appendOrEnableEditText();
       toggleEditDropdown();
+      createSection();
     }
   };
 }
