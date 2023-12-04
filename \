@@ -3,45 +3,21 @@ const createItems = document.querySelectorAll('.new-section-popup ul li');
 const currentSelectedSections = [];
 
 createItems.forEach(item => {
-  item.addEventListener('click', (e) => {
+  item.addEventListener('click', () => {
     const input = item.firstElementChild;
-    if (e.target.tagName === 'INPUT') {
-      if (input.checked === false) {
-        const index = currentSelectedSections.indexOf(input.value);
-        if (index > -1) {
-          currentSelectedSections.splice(index, 1);
-        }
-        console.log('unchecked');
-      } else {
-        currentSelectedSections.push(input.value);
-        console.log('checked');
-      }
-      console.log(currentSelectedSections);
-      return;
-    }
-
     // make checkbox checked
-    if (input.checked === false) {
-      input.checked = true;
+    if (item.firstElementChild.checked === false) {
+      item.firstElementChild.checked = true;
       currentSelectedSections.push(input.value);
     } else {
-      input.checked = false;
+      item.firstElementChild.checked = false;
       const index = currentSelectedSections.indexOf(input.value);
       if (index > -1) {
         currentSelectedSections.splice(index, 1);
       }
     }
-    console.log(currentSelectedSections);
   });
 });
-
-function clearInputs () {
-  currentSelectedSections.forEach(section => {
-    const input = document.querySelector(`.new-section-popup ul li input[value="${section}"]`);
-    input.checked = false;
-  });
-  currentSelectedSections.length = 0;
-}
 
 function handleClick (e) {
   const popup = document.querySelector('.new-section-popup');
@@ -73,7 +49,6 @@ function createNewSection () {
 }
 
 function closePopup () {
-  clearInputs();
   document.body.removeEventListener('click', handleClick);
   const popup = document.querySelector('.new-section-popup');
   popup.style.visibility = 'hidden';
@@ -131,20 +106,6 @@ function createSection () {
     newSectionBtn.removeEventListener('click', createNewSection);
     document.getElementById('cancel-section').removeEventListener('click', closePopup);
   }
-}
-
-function generateId () {
-  const numberId = Math.floor(Math.random() * 10000000);
-  const stringId = Math.random().toString(36).substr(2, 9);
-  return `${numberId}${stringId}`;
-}
-
-function createSections () {
-  currentSelectedSections.forEach(section => {
-    // generate new id for section
-    const id = generateId();
-    // create new section
-  });
 }
 
 export { createSection };
