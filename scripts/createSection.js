@@ -1,3 +1,5 @@
+import { createTextComponent } from './components/text.js';
+
 const createItems = document.querySelectorAll('.new-section-popup ul li');
 
 const currentSelectedSections = [];
@@ -11,12 +13,9 @@ createItems.forEach(item => {
         if (index > -1) {
           currentSelectedSections.splice(index, 1);
         }
-        console.log('unchecked');
       } else {
         currentSelectedSections.push(input.value);
-        console.log('checked');
       }
-      console.log(currentSelectedSections);
       return;
     }
 
@@ -31,7 +30,6 @@ createItems.forEach(item => {
         currentSelectedSections.splice(index, 1);
       }
     }
-    console.log(currentSelectedSections);
   });
 });
 
@@ -113,6 +111,10 @@ function createSection () {
 
     newSectionBtn.addEventListener('click', createNewSection);
     document.getElementById('cancel-section').addEventListener('click', closePopup);
+    document.getElementById('create-section').addEventListener('click', () => {
+      createSections();
+      closePopup();
+    });
   } else {
     newSectionBtn.style.opacity = '0';
     newSectionBtn.style.transform = 'translateY(-20%)';
@@ -130,6 +132,10 @@ function createSection () {
 
     newSectionBtn.removeEventListener('click', createNewSection);
     document.getElementById('cancel-section').removeEventListener('click', closePopup);
+    document.getElementById('create-section').removeEventListener('click', () => {
+      createSections();
+      closePopup();
+    });
   }
 }
 
@@ -143,7 +149,18 @@ function createSections () {
   currentSelectedSections.forEach(section => {
     // generate new id for section
     const id = generateId();
-    // create new section
+    // create new section element with id
+    const newSection = document.createElement('section');
+    newSection.setAttribute('id', id);
+    newSection.setAttribute('class', 'editable');
+    newSection.innerHTML = `
+            <div class="text-container">
+            </div>
+          `;
+
+    // append new section to main
+    document.querySelector('main').appendChild(newSection);
+    createTextComponent('Hello World', newSection.firstElementChild);
   });
 }
 

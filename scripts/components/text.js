@@ -1,12 +1,10 @@
-function createTextComponent (name) {
-  document.querySelectorAll('.text-container').forEach((item) => {
-    const text = document.createElement('div');
-    text.classList.add('text');
-    text.innerHTML = `
+function createTextComponent (name, ele) {
+  const text = document.createElement('div');
+  text.classList.add('text');
+  text.innerHTML = `
         <h1>${name}</h1>
         <input type="text" placeholder="Enter text">`;
-    item.appendChild(text);
-  });
+  ele.appendChild(text);
 }
 
 export { createTextComponent };
