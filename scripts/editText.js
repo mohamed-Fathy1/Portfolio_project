@@ -1,6 +1,14 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
 import { styleObserver } from './styleObserver.js';
 
+/**
+    * @returns {void}
+    * @description
+    * This function is used to enable edit sub dropdown
+    * @example
+    * // This example shows how to use the function
+    * enableEditdropdownSub();
+* */
 function enableEditDropdownSub () {
   const ele = this.lastElementChild;
 
@@ -29,7 +37,7 @@ function enableEditDropdownSub () {
     ele.style.top = 'auto';
     ele.style.bottom = '0%';
   }
-
+  // appendOrEnableEditText();
   // Toggle visibility and overflow
   if (ele.style.visibility === 'visible') {
     this.style.overflow = 'hidden';
@@ -42,14 +50,21 @@ function enableEditDropdownSub () {
   }
 }
 
+/**
+    * @returns {void}
+    * @description
+    * This function is used to append or enable edit text dropdown
+    * @example
+    * // This example shows how to use the function
+    * appendOrEnableEditText();
+* */
 function appendOrEnableEditText () {
-  let text = document.querySelectorAll('.costumize-text-dropdown');
-  if (text.length === 0) {
-    console.log('created');
-    // create a unique id for each dropdown
-    createTextDropdownComponent();
-    text = document.querySelectorAll('.costumize-text-dropdown');
-  }
+  const text = document.querySelectorAll('.costumize-text-dropdown');
+  // if (text.length === 0) {
+  //   console.log('created');
+  //   // create a unique id for each dropdown
+  //   text = document.querySelectorAll('.costumize-text-dropdown');
+  // }
   text.forEach((ele) => {
     if (window.edit === true) {
       ele.style.display = 'block';
@@ -61,6 +76,15 @@ function appendOrEnableEditText () {
   });
 }
 
+/**
+    * @param {MouseEvent} e
+    * @returns {void}
+    * @description
+    * This function is used to enable edit dropdown
+    * @example
+    * // This example shows how to use the function
+    * enableEditdropdown(e);
+* */
 function enableEditdropdown () {
   const nextSibling = this.nextElementSibling;
   const parent = this.parentElement;
@@ -101,12 +125,20 @@ function enableEditdropdown () {
   }
 }
 
+/**
+    * @param {MouseEvent} e
+    * @returns {void}
+    * @description
+    * This function is used to clear edit dropdown
+    * @example
+    * // This example shows how to use the function
+    * clearEditDropdown(e);
+* */
 function clearEditDropdown (e) {
   const btn = document.querySelectorAll('.text-dropbtn');
   const dropdown = document.querySelectorAll('.text-dropdown-content');
   const parent = document.querySelectorAll('.costumize-text-dropdown');
   const colorPicker = document.querySelectorAll('.pcr-app');
-  // const flag = false;
   for (let i = 0; i < btn.length; i++) {
     if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target) && !parent[i].contains(e.target) && ![...colorPicker].some(ele => ele.contains(e.target))) {
       if (dropdown[i].style.visibility === 'visible') {
@@ -115,33 +147,31 @@ function clearEditDropdown (e) {
         dropdown[i].style.visibility = 'hidden';
         dropdown[i].style.opacity = '0';
       }
-      // flag = true;
-      // break;
     }
   }
-  // if (flag === false) {
-  //   for (let i = 0; i < dropdown.length; i++) {
-  //     if (dropdown[i].style.visibility === 'visible') {
-  //       parent[i].style.overflow = 'hidden';
-  //       dropdown[i].style.top = '0%';
-  //       dropdown[i].style.visibility = 'hidden';
-  //       dropdown[i].style.opacity = '0';
-  //     }
-  //   }
-  // }
 }
 
-function toggleEditDropdown () {
-  const btn = document.querySelectorAll('.text-dropbtn');
+/**
+    * @returns {void}
+    * @description
+    * This function is used to toggle edit dropdown
+    * @example
+    * // This example shows how to use the function
+    * toggleEditDropdown();
+* */
+function toggleEditDropdown (ele) {
+  // console.log(ele);
+  // console.log(this);
+  console.log(ele.parentElement);
+  createTextDropdownComponent(ele.parentElement);
+  // console.log(ele);
+  const btn = ele.nextElementSibling.firstElementChild;
+  console.log(btn);
   if (window.edit === true) {
-    btn.forEach((ele) => {
-      ele.addEventListener('click', enableEditdropdown);
-    });
+    btn.addEventListener('click', enableEditdropdown);
     document.body.addEventListener('click', clearEditDropdown);
   } else {
-    btn.forEach((ele) => {
-      ele.removeEventListener('click', enableEditdropdown);
-    });
+    btn.removeEventListener('click', enableEditdropdown);
     document.body.removeEventListener('click', clearEditDropdown);
   }
 }
@@ -175,8 +205,6 @@ function textEdtingEvent (ele) {
   let fontWeight = window.getComputedStyle(textEle, null).getPropertyValue('font-weight');
   fontWeight = parseFloat(fontWeight);
   input.value = text;
-  console.log(input.value);
-  console.log(text);
   // input.style.height = `${height}px`;
   input.style.fontSize = `${fontSize}px`;
   input.style.fontWeight = fontWeight;
@@ -204,8 +232,17 @@ function textEdtingEvent (ele) {
   textEle.style.display = 'none';
   input.style.display = 'block';
   input.disabled = false;
+  toggleEditDropdown(ele);
 }
 
+/**
+    * @returns {void}
+    * @description
+    * This function is used to disable edit text
+    * @example
+    * // This example shows how to use the function
+    * disableEditText();
+* */
 function disableEditText () {
   if (window.edit === false) {
     document.querySelectorAll('.text').forEach((ele) => {
@@ -226,6 +263,14 @@ function disableEditText () {
   }
 }
 
+/**
+    * @returns {void}
+    * @description
+    * This function is used to enable edit text
+    * @example
+    * // This example shows how to use the function
+    * enableEditText();
+* */
 function enableEditText () {
   document.querySelectorAll('.text').forEach((ele) => {
     if (window.edit === true) {
@@ -234,4 +279,4 @@ function enableEditText () {
   });
 }
 
-export { disableEditText, enableEditText, toggleEditDropdown, appendOrEnableEditText, textEdtingEvent };
+export { disableEditText, enableEditText, appendOrEnableEditText, textEdtingEvent };

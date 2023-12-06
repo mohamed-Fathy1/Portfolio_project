@@ -4,6 +4,14 @@ import { borderStyleSubDropdown, changeBorderWidth } from './borderStyleSubDropd
 import { spacingAndAlignmentSubDropdown } from './spacingAndAlignmentSubDropdown.js';
 import { textDecorationsSubDropdown } from './textDecorationSubDropdown.js';
 
+/**
+    * @returns {void}
+    * @description
+    * This function is used to create color picker
+    * @example
+    * // This example shows how to use the function
+    * createColorPicker();
+* */
 function createColorPicker (id) {
   const pickr = Pickr.create({
     el: `#${id}`,
@@ -51,8 +59,16 @@ function createColorPicker (id) {
   return pickr;
 }
 
-function createTextDropdownComponent () {
-  const container = document.querySelectorAll('.text-container');
+/**
+    * @returns {void}
+    * @description
+    * This function is used to create text dropdown component
+    * @example
+    * // This example shows how to use the function
+    * createTextDropdownComponent();
+* */
+function createTextDropdownComponent (ele) {
+  // const container = document.querySelectorAll('.text-container');
   const items = ['Text Style', 'Background Style', 'Border Style',
     'Spacing and Alignment', 'Text Decoration'];
   const componentDict = {
@@ -63,12 +79,12 @@ function createTextDropdownComponent () {
     'Text Decoration': textDecorationsSubDropdown
   };
 
-  container.forEach((ele, index) => {
-    const randomId = Math.random().toString(36).substr(2, 9);
-    // console.log(randomId);
-    ele.setAttribute('id', `text-container-${randomId}`);
-    ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
-    const component = `
+  // container.forEach((ele, index) => {
+  const randomId = Math.random().toString(36).substr(2, 9);
+  // console.log(randomId);
+  ele.setAttribute('id', `text-container-${randomId}`);
+  ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
+  const component = `
     <div class="costumize-text-dropdown">
         <button class="text-dropbtn">Dropdown</button>
         <div class="text-dropdown-content">
@@ -81,39 +97,39 @@ function createTextDropdownComponent () {
     </div>
   `;
 
-    ele.insertAdjacentHTML('beforeend', component);
+  ele.insertAdjacentHTML('beforeend', component);
 
-    items.forEach((item, index) => {
+  items.forEach((item, index) => {
     // Assuming you want to create a color picker for each element
-      const fontColorId = `#fontColor-${index}-${randomId}`;
-      const backgroundColorId = `#backgroundColor-${index}-${randomId}`;
-      const borderColorId = `#borderColor-${index}-${randomId}`;
-      const textDecorationColorId = `#textDecorationColor-${index}-${randomId}`;
-      const colorPickerId = [fontColorId, backgroundColorId, borderColorId, textDecorationColorId];
+    const fontColorId = `#fontColor-${index}-${randomId}`;
+    const backgroundColorId = `#backgroundColor-${index}-${randomId}`;
+    const borderColorId = `#borderColor-${index}-${randomId}`;
+    const textDecorationColorId = `#textDecorationColor-${index}-${randomId}`;
+    const colorPickerId = [fontColorId, backgroundColorId, borderColorId, textDecorationColorId];
 
-      if (document.querySelector(colorPickerId)) {
-        const item = document.querySelector(colorPickerId);
+    if (document.querySelector(colorPickerId)) {
+      const item = document.querySelector(colorPickerId);
 
-        const pickr = createColorPicker(item.id);
-        const pickrObject = document.querySelector(colorPickerId);
-        const input = document.querySelector(`#text-${randomId}`).lastElementChild;
-        pickr.on('change', (color, instance) => {
-          pickrObject.style.backgroundColor = color.toRGBA().toString();
-          const instancID = pickr._root.button.id;
-          if (instancID.includes('fontColor')) {
-            input.style.color = color.toRGBA().toString();
-          } else if (instancID.includes('backgroundColor')) {
-            input.style.backgroundColor = color.toRGBA().toString();
-          } else if (instancID.includes('borderColor')) {
-            input.style.borderColor = color.toRGBA().toString();
-          } else if (instancID.includes('textDecorationColor')) {
-            input.style.textDecorationColor = color.toRGBA().toString();
-          }
-        });
-        pickrObject.style.backgroundColor = window.getComputedStyle(input, null).getPropertyValue('color');
-      }
-    });
+      const pickr = createColorPicker(item.id);
+      const pickrObject = document.querySelector(colorPickerId);
+      const input = document.querySelector(`#text-${randomId}`).lastElementChild;
+      pickr.on('change', (color, instance) => {
+        pickrObject.style.backgroundColor = color.toRGBA().toString();
+        const instancID = pickr._root.button.id;
+        if (instancID.includes('fontColor')) {
+          input.style.color = color.toRGBA().toString();
+        } else if (instancID.includes('backgroundColor')) {
+          input.style.backgroundColor = color.toRGBA().toString();
+        } else if (instancID.includes('borderColor')) {
+          input.style.borderColor = color.toRGBA().toString();
+        } else if (instancID.includes('textDecorationColor')) {
+          input.style.textDecorationColor = color.toRGBA().toString();
+        }
+      });
+      pickrObject.style.backgroundColor = window.getComputedStyle(input, null).getPropertyValue('color');
+    }
   });
+  // });
 }
 
 export { createTextDropdownComponent };

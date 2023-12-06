@@ -1,4 +1,4 @@
-import { enableEditText, disableEditText, toggleEditDropdown, appendOrEnableEditText } from './editText.js';
+import { enableEditText, disableEditText, appendOrEnableEditText } from './editText.js';
 import { createSection } from './createSection.js';
 
 function editableStyle () {
@@ -36,13 +36,11 @@ function toggleEdite () {
       enableEditText();
       appendOrEnableEditText();
       editableStyle();
-      toggleEditDropdown();
     } else {
       window.edit = false;
       this.innerHTML = 'Edit';
       disableEditText();
       appendOrEnableEditText();
-      toggleEditDropdown();
       editableStyle();
       createSection();
     }
