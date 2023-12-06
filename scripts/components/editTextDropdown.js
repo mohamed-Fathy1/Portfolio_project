@@ -60,6 +60,7 @@ function createColorPicker (id) {
 }
 
 /**
+    * @param {HTMLElement} ele
     * @returns {void}
     * @description
     * This function is used to create text dropdown component
@@ -68,7 +69,6 @@ function createColorPicker (id) {
     * createTextDropdownComponent();
 * */
 function createTextDropdownComponent (ele) {
-  // const container = document.querySelectorAll('.text-container');
   const items = ['Text Style', 'Background Style', 'Border Style',
     'Spacing and Alignment', 'Text Decoration'];
   const componentDict = {
@@ -79,9 +79,7 @@ function createTextDropdownComponent (ele) {
     'Text Decoration': textDecorationsSubDropdown
   };
 
-  // container.forEach((ele, index) => {
   const randomId = Math.random().toString(36).substr(2, 9);
-  // console.log(randomId);
   ele.setAttribute('id', `text-container-${randomId}`);
   ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
   const component = `
@@ -129,7 +127,6 @@ function createTextDropdownComponent (ele) {
       pickrObject.style.backgroundColor = window.getComputedStyle(input, null).getPropertyValue('color');
     }
   });
-  // });
 }
 
 export { createTextDropdownComponent };

@@ -61,7 +61,6 @@ function enableEditDropdownSub () {
 function appendOrEnableEditText () {
   const text = document.querySelectorAll('.costumize-text-dropdown');
   // if (text.length === 0) {
-  //   console.log('created');
   //   // create a unique id for each dropdown
   //   text = document.querySelectorAll('.costumize-text-dropdown');
   // }
@@ -152,6 +151,7 @@ function clearEditDropdown (e) {
 }
 
 /**
+    * @param {HTMLElement} ele
     * @returns {void}
     * @description
     * This function is used to toggle edit dropdown
@@ -160,13 +160,9 @@ function clearEditDropdown (e) {
     * toggleEditDropdown();
 * */
 function toggleEditDropdown (ele) {
-  // console.log(ele);
-  // console.log(this);
-  console.log(ele.parentElement);
   createTextDropdownComponent(ele.parentElement);
-  // console.log(ele);
+  appendOrEnableEditText();
   const btn = ele.nextElementSibling.firstElementChild;
-  console.log(btn);
   if (window.edit === true) {
     btn.addEventListener('click', enableEditdropdown);
     document.body.addEventListener('click', clearEditDropdown);
