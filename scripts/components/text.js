@@ -5,6 +5,7 @@ function createTextComponent (name, ele) {
         <h1>${name}</h1>
         <input type="text" placeholder="Enter text">`;
   ele.appendChild(text);
+  return text;
 }
 
 export { createTextComponent };

@@ -146,6 +146,16 @@ function toggleEditDropdown () {
   }
 }
 
+/**
+    * @param {HTMLElement} ele
+    * @returns {void}
+    * @description
+    * This function is used to enable text editing
+    *
+    * @example
+    * // This example shows how to use the function
+    * textEdtingEvent(ele);
+* */
 function textEdtingEvent (ele) {
   const input = ele.lastElementChild;
   // check if input is already focused
@@ -165,6 +175,8 @@ function textEdtingEvent (ele) {
   let fontWeight = window.getComputedStyle(textEle, null).getPropertyValue('font-weight');
   fontWeight = parseFloat(fontWeight);
   input.value = text;
+  console.log(input.value);
+  console.log(text);
   // input.style.height = `${height}px`;
   input.style.fontSize = `${fontSize}px`;
   input.style.fontWeight = fontWeight;
@@ -186,12 +198,6 @@ function textEdtingEvent (ele) {
       ele.style.borderRadius = '0px';
     }
   });
-  // input.addEventListener('change', function () {
-  //   console.log(this.parentElement.firstElementChild);
-  //   const cssText = this.attributes.style;
-  //   this.parentElement.firstElementChild.attributes.style.value = cssText.value;
-  //   this.parentElement.firstElementChild.style.display = 'none';
-  // });
 
   styleObserver.observe(input, { attributes: true, attributeFilter: ['style'] });
 
@@ -228,4 +234,4 @@ function enableEditText () {
   });
 }
 
-export { disableEditText, enableEditText, toggleEditDropdown, appendOrEnableEditText };
+export { disableEditText, enableEditText, toggleEditDropdown, appendOrEnableEditText, textEdtingEvent };

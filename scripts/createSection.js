@@ -1,5 +1,6 @@
 import { createTextComponent } from './components/text.js';
 import { editableStyle } from './edit.js';
+import { textEdtingEvent } from './editText.js';
 
 const createItems = document.querySelectorAll('.new-section-popup ul li');
 
@@ -161,7 +162,8 @@ function createSections () {
 
     // append new section to main
     document.querySelector('main').appendChild(newSection);
-    createTextComponent(section, newSection.firstElementChild);
+    const textComponent = createTextComponent(section, newSection.firstElementChild);
+    textEdtingEvent(textComponent);
   });
   editableStyle();
 }
