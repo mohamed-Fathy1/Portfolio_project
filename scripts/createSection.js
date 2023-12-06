@@ -1,4 +1,5 @@
 import { createTextComponent } from './components/text.js';
+import { editableStyle } from './edit.js';
 
 const createItems = document.querySelectorAll('.new-section-popup ul li');
 
@@ -148,7 +149,7 @@ function generateId () {
 function createSections () {
   currentSelectedSections.forEach(section => {
     // generate new id for section
-    const id = generateId();
+    const id = `section-${section}-${generateId()}`;
     // create new section element with id
     const newSection = document.createElement('section');
     newSection.setAttribute('id', id);
@@ -160,8 +161,9 @@ function createSections () {
 
     // append new section to main
     document.querySelector('main').appendChild(newSection);
-    createTextComponent('Hello World', newSection.firstElementChild);
+    createTextComponent(section, newSection.firstElementChild);
   });
+  editableStyle();
 }
 
 export { createSection };
