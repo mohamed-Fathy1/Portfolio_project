@@ -10,7 +10,7 @@ import { textDecorationsSubDropdown } from './textDecorationSubDropdown.js';
     * This function is used to create color picker
     * @example
     * // This example shows how to use the function
-    * createColorPicker();
+    * createColorPicker(id)
 * */
 function createColorPicker (id) {
   const pickr = Pickr.create({
