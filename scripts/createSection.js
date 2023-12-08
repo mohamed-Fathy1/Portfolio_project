@@ -35,6 +35,12 @@ createItems.forEach(item => {
   });
 });
 
+/**
+    * @description clear inputs
+    * @returns {void}
+    * @example
+    * clearInputs();
+* */
 function clearInputs () {
   currentSelectedSections.forEach(section => {
     const input = document.querySelector(`.new-section-popup ul li input[value="${section}"]`);
@@ -43,6 +49,13 @@ function clearInputs () {
   currentSelectedSections.length = 0;
 }
 
+/**
+    * @description handle click event
+    * @param {object} e - event object
+    * @returns {void}
+    * @example
+    * handleClick(e);
+* */
 function handleClick (e) {
   const popup = document.querySelector('.new-section-popup');
   if (!popup.firstElementChild.contains(e.target)) {
@@ -51,6 +64,12 @@ function handleClick (e) {
   }
 }
 
+/**
+    * @description create new section popup
+    * @returns {void}
+    * @example
+    * createNewSection();
+* */
 function createNewSection () {
   const popup = document.querySelector('.new-section-popup');
   popup.style.display = 'block';
@@ -72,6 +91,12 @@ function createNewSection () {
   document.body.style.overflow = 'hidden';
 }
 
+/**
+    * @description close popup
+    * @returns {void}
+    * @example
+    * closePopup();
+* */
 function closePopup () {
   clearInputs();
   document.body.removeEventListener('click', handleClick);
@@ -93,6 +118,13 @@ function closePopup () {
   document.body.style.overflow = 'auto';
 }
 
+/**
+    * @description create new section
+    * @param {boolean} edit - edit mode
+    * @returns {void}
+    * @example
+    * createSection(true);
+* */
 function createSection () {
   const newSectionBtn = document.querySelector('.new-section#new-section');
   if (window.edit) {
@@ -141,12 +173,24 @@ function createSection () {
   }
 }
 
+/**
+    * @description generate id
+    * @returns {string} id
+    * @example
+    * generateId();
+* */
 function generateId () {
   const numberId = Math.floor(Math.random() * 10000000);
   const stringId = Math.random().toString(36).substr(2, 9);
   return `${numberId}${stringId}`;
 }
 
+/**
+    * @description create sections
+    * @returns {void}
+    * @example
+    * createSections();
+* */
 function createSections () {
   currentSelectedSections.forEach(section => {
     // generate new id for section
