@@ -1,10 +1,12 @@
 .hero-1 {
-    height: 100%;
+    height: calc(100vh - 80px);
     display: flex;
+    background-color: #F2F2F2;
 }
 
 .hero-1 .hero-1__section-1{
     width: 40%;
+    position: relative;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -12,8 +14,28 @@
 }
 
 .hero-1 .hero-1__section-1 .hero-1__image-container{
-    width: 100%;
+    width: fit-content;
     height: 100%;
-    position: relative;
-    left: 10px
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: -30%;
+}
+
+.hero-1 .hero-1__section-1 .hero-1__image-container > * {
+  width: 250px;
+  aspect-ratio: 2/3;
+}
+.hero-1 .hero-1__image-container .hero-1__image-overlay{
+  display: block;
+  border: 5px solid #32557f;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  transform: translate(-15%, -5%);
+}
+
+.hero-1 .hero-1__section-1 .hero-1__image-container img{
+    object-fit: cover;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: 1;
 }
