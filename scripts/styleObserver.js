@@ -1,3 +1,5 @@
+// Description: This file contains the style observer that is used to
+//  update the style of the editable elements when the style changed.
 const styleObserver = new MutationObserver(function (mutations) {
   if (mutations[0].target.style.display === 'none') {
     return;

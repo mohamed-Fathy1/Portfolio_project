@@ -1,6 +1,25 @@
 import { enableEditText, disableEditText, appendOrEnableEditText } from './editText.js';
 import { createSection } from './createSection.js';
 
+/**
+    * @description clear color picker
+    * @returns {void}
+    * @example
+    * clearColorPicker();
+* */
+function clearColorPicker () {
+  const colorPicker = document.querySelectorAll('.pcr-app');
+  colorPicker.forEach(ele => {
+    ele.remove();
+  });
+}
+
+/**
+    * @description editable style
+    * @returns {void}
+    * @example
+    * editableStyle();
+* */
 function editableStyle () {
   const editables = document.querySelectorAll('.editable');
   if (window.edit === true) {
@@ -27,6 +46,12 @@ function editableStyle () {
   }
 }
 
+/**
+    * @description toggle edit mode
+    * @returns {void}
+    * @example
+    * toggleEdite();
+* */
 function toggleEdite () {
   document.getElementById('Edit').onclick = function () {
     if (window.edit === false) {
@@ -43,6 +68,7 @@ function toggleEdite () {
       appendOrEnableEditText();
       editableStyle();
       createSection();
+      clearColorPicker();
     }
   };
 }
