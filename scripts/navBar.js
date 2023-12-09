@@ -1,17 +1,26 @@
 
 let navBarOpen = false;
 
-function toggleNavBar () {
+function closeNavBar () {
   const navBar = document.querySelector('header nav');
+  navBar.classList.remove('visible');
+  navBarOpen = false;
+}
+
+function toggleNavBar () {
   console.log(navBarOpen);
   if (navBarOpen) {
-    navBar.classList.remove('visible');
-    navBarOpen = false;
+    closeNavBar();
   } else {
+    const navBar = document.querySelector('header nav');
     navBar.classList.add('visible');
     navBarOpen = true;
   }
 }
 document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
-
+document.body.addEventListener('click', (event) => {
+  if (navBarOpen && !event.target.closest('header button.hamburger')) {
+    closeNavBar();
+  }
+});
 export { toggleNavBar };
