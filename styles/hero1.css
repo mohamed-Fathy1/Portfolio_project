@@ -23,19 +23,20 @@
 }
 
 .hero-1 .hero-1__section-1 .hero-1__image-container > * {
-  width: 250px;
+  width: 300px;
   aspect-ratio: 2/3;
 }
 .hero-1 .hero-1__image-container .hero-1__image-overlay{
   display: block;
-  border: 5px solid #32557f;
+    background-color: #F2F2F2;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   position: absolute;
-  transform: translate(-15%, -5%);
+  transform: translate(-8%, 0%) scale(1.1);
 }
 
 .hero-1 .hero-1__section-1 .hero-1__image-container img{
     object-fit: cover;
+    border: 1px solid #000;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     z-index: 1;
 }
@@ -56,16 +57,21 @@
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container h1{
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 900;
     color: #000;
-    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-1 .hero-1__section-2 .hero-1__text-container h1:first-of-type{
+    color: #c4c4c4;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container p{
     font-size: 1.2rem;
     font-weight: 500;
-    color: #000;
+    color: #707070;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
 
@@ -73,14 +79,15 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 900;
     background-color: #121212;
     color: #fff;
-    padding: 1rem 2rem;
+    padding: .7rem 2rem;
     border-radius: 32px;
     border: none;
     margin-right: 1rem;
