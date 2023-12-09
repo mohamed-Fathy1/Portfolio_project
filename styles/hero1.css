@@ -31,7 +31,7 @@
     background-color: #F2F2F2;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   position: absolute;
-  transform: translate(-8%, 0%) scale(1.1);
+  transform: translate(-8%, 0%) scaleY(1.1);
 }
 
 .hero-1 .hero-1__section-1 .hero-1__image-container img{
@@ -112,4 +112,113 @@
     cursor: pointer;
     color: #fff;
     background-color: #000;
+}
+
+
+@media screen and (max-width: 1724px){
+    .hero-1 .hero-1__section-1 .hero-1__image-container{
+        right: -40%;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container h1{
+        font-size: 4rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container p{
+        font-size: 1.1rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        font-size: .8rem;
+        padding: .6rem 1.8rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        padding: .6rem 1.8rem;
+    }
+
+    .hero-1 .hero-1__section-1 .hero-1__image-container > * {
+        width: 250px;
+    }
+}
+
+
+@media screen and (max-width: 911px){
+    .hero-1 .hero-1__section-1 .hero-1__image-container{
+        right: -30%;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container h1{
+        font-size: 3.1rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container p{
+        font-size: 1rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        font-size: .7rem;
+        padding: .5rem 1.5rem;
+    }
+
+    .hero-1 .hero-1__section-1 .hero-1__image-container > * {
+        width: 200px;
+    }
+
+    .hero-1 .hero-1__section-1 .hero-1__image-container .hero-1__image-overlay{
+        transform: translate(-6%, 0%) scaleY(1.1);
+    }
+}
+
+@media screen and (max-width: 768px){
+    .hero-1 .hero-1__section-1{
+        display: none;
+    }
+
+    .hero-1 .hero-1__section-2{
+        padding: 0 1rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container h1{
+        font-size: 3rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container p{
+        font-size: 1rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        font-size: .7rem;
+        padding: .5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .hero-1 .hero-1__section-2 .hero-1__text-container h1{
+        font-size: 2.5rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container p{
+        font-size: .9rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        font-size: .6rem;
+        padding: .4rem 1.2rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .hero-1 .hero-1__section-2 .hero-1__text-container h1{
+        font-size: 2rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container p{
+        font-size: .8rem;
+    }
+
+    .hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+        font-size: .5rem;
+        padding: .3rem 1rem;
+    }
 }
