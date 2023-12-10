@@ -46,14 +46,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+}
+
+.hero-1 .hero-1__section-2 .hero-1__section-2-content {
+    max-width: 800px;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container{
-    max-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.hero-1 .hero-1__section-2 {
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container h1{
@@ -75,14 +81,14 @@
     margin-bottom: 1rem;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container{
+.hero-1 .hero-1__section-2 .hero-1__btn-container{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-top: 1rem;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button{
+.hero-1 .hero-1__section-2 .hero-1__btn-container button{
     font-size: .8rem;
     font-weight: 900;
     background-color: #121212;
@@ -95,20 +101,20 @@
     border: 2px solid transparent;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button:hover{
+.hero-1 .hero-1__section-2 .hero-1__btn-container button:hover{
     cursor: pointer;
     color: #121212;
     background-color: #fff;
     border: 2px solid #121212;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button:last-child{
+.hero-1 .hero-1__section-2 .hero-1__btn-container button:last-child{
     background-color: #fff;
     color: #000;
     border: 2px solid #000;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container .hero-1__btn-container button:last-child:hover{
+.hero-1 .hero-1__section-2 .hero-1__btn-container button:last-child:hover{
     cursor: pointer;
     color: #fff;
     background-color: #000;

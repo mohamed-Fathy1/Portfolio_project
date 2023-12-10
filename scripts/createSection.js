@@ -204,8 +204,17 @@ function createSections () {
 
       document.querySelector('header').firstElementChild.setAttribute('id', id);
       document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
+      const textHeader1 = document.querySelector('header .hero-1__text-container .text-container:first-child');
+      const textHeader2 = document.querySelector('header .hero-1__text-container .text-container:nth-child(2)');
+      const textParagrph = document.querySelector('header .hero-1__text-container .text-container:last-child');
+      const textComponent = [textHeader1, textHeader2, textParagrph];
+      const textType = ['h1', 'h1', 'p'];
+      textComponent.forEach((text, index) => {
+        const textComponent = createTextComponent(textType[index], text.textContent, text);
+        textEdtingEvent(textComponent);
+      });
     } else {
-    // create new section element with id
+      // create new section element with id
       const newSection = document.createElement('section');
       newSection.setAttribute('id', id);
       newSection.setAttribute('class', 'editable');

@@ -34,10 +34,12 @@ function hero1 () {
                 </div>
             </div>
             <div class="hero-1__section-2">
-                <div class="hero-1__text-container">
-                    <h1 class="hero-1__title">I'm a</h1>
-                    <h1 class="hero-1__title">Web Developer</h1>
-                    <p class="hero-1__text">100% Html5 Bootstrap5 Templates Made By Growtech</p>
+                <div class="hero-1__section-2-content">
+                    <div class="hero-1__text-container">
+                        <div class="text-container">I'm a</div>
+                        <div class="text-container">Web Developer</div>
+                        <div class="text-container">100% Html5 Bootstrap5 Templates Made By Growtech</div>
+                    </div>
                     <div class="hero-1__btn-container">
                         <button class="hero-1__btn">Learn More</button>
                         <button class="hero-1__btn">Contact</button>
