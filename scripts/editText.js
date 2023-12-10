@@ -182,7 +182,10 @@ function clearEditDropdown (e) {
     * toggleEditDropdown();
 * */
 function toggleEditDropdown (ele) {
-  createTextDropdownComponent(ele.parentElement);
+  if (ele.nextElementSibling === null) {
+    console.log('created');
+    createTextDropdownComponent(ele.parentElement);
+  }
   appendOrEnableEditText();
   const btn = ele.nextElementSibling.firstElementChild;
   if (window.edit === true) {
@@ -263,7 +266,9 @@ function textEdtingEvent (ele) {
 * */
 function disableEditText () {
   if (window.edit === false) {
+    appendOrEnableEditText();
     document.querySelectorAll('.text').forEach((ele) => {
+      toggleEditDropdown(ele);
       ele.removeEventListener('click', textEdtingEvent);
       styleObserver.disconnect();
       const input = ele.lastElementChild;
@@ -297,4 +302,4 @@ function enableEditText () {
   });
 }
 
-export { disableEditText, enableEditText, appendOrEnableEditText, textEdtingEvent };
+export { disableEditText, enableEditText, textEdtingEvent };

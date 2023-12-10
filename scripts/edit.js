@@ -1,4 +1,4 @@
-import { enableEditText, disableEditText, appendOrEnableEditText } from './editText.js';
+import { enableEditText, disableEditText } from './editText.js';
 import { createSection } from './createSection.js';
 
 /**
@@ -59,13 +59,11 @@ function toggleEdite () {
       window.edit = true;
       createSection();
       enableEditText();
-      appendOrEnableEditText();
       editableStyle();
     } else {
       window.edit = false;
       this.innerHTML = 'Edit';
       disableEditText();
-      appendOrEnableEditText();
       editableStyle();
       createSection();
       clearColorPicker();

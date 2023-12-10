@@ -83,7 +83,7 @@ function createTextDropdownComponent (ele) {
   ele.setAttribute('id', `text-container-${randomId}`);
   ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
   const component = `
-    <div class="costumize-text-dropdown">
+    <div id="costumize-text-dropdown-${randomId}" class="costumize-text-dropdown">
         <button class="text-dropbtn">Dropdown</button>
         <div class="text-dropdown-content">
             <ul>
