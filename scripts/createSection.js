@@ -1,6 +1,8 @@
 import { createTextComponent } from './components/text.js';
 import { editableStyle } from './edit.js';
 import { textEdtingEvent } from './editText.js';
+import { hero1 } from './components/hero-1.js';
+import { toggleNavBar } from './navBar.js';
 
 const createItems = document.querySelectorAll('.new-section-popup ul li');
 
@@ -192,22 +194,31 @@ function generateId () {
     * createSections();
 * */
 function createSections () {
+  const components = { hero: hero1, about: 0, contact: 0, blog: 0, projects: 0, footer: 0 };
   currentSelectedSections.forEach(section => {
     // generate new id for section
     const id = `section-${section}-${generateId()}`;
+    if (section === 'hero') {
+      const hero = components[section]();
+      document.querySelector('header').insertAdjacentHTML('beforeend', hero);
+
+      document.querySelector('header').firstElementChild.setAttribute('id', id);
+      document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
+    } else {
     // create new section element with id
-    const newSection = document.createElement('section');
-    newSection.setAttribute('id', id);
-    newSection.setAttribute('class', 'editable');
-    newSection.innerHTML = `
+      const newSection = document.createElement('section');
+      newSection.setAttribute('id', id);
+      newSection.setAttribute('class', 'editable');
+      newSection.innerHTML = `
             <div class="text-container">
             </div>
           `;
 
-    // append new section to main
-    document.querySelector('main').appendChild(newSection);
-    const textComponent = createTextComponent(section, newSection.firstElementChild);
-    textEdtingEvent(textComponent);
+      // append new section to main
+      document.querySelector('main').appendChild(newSection);
+      const textComponent = createTextComponent(section, newSection.firstElementChild);
+      textEdtingEvent(textComponent);
+    }
   });
   editableStyle();
 }

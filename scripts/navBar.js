@@ -29,7 +29,9 @@ function toggleNavBar () {
   }
 }
 
-document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
+if (document.querySelector('header button.hamburger')) {
+  document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
+}
 document.body.addEventListener('click', (event) => {
   if (navBarOpen && !event.target.closest('header button.hamburger')) {
     closeNavBar();
