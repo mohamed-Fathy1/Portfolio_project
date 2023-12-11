@@ -225,7 +225,7 @@ function createSections () {
 
       // append new section to main
       document.querySelector('main').appendChild(newSection);
-      const textComponent = createTextComponent(section, newSection.firstElementChild);
+      const textComponent = createTextComponent('h1', section, newSection.firstElementChild);
       textEdtingEvent(textComponent);
     }
   });

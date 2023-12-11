@@ -69,14 +69,14 @@
     line-height: 1.1;
 }
 
-.hero-1 .hero-1__section-2 .hero-1__text-container h1:first-of-type{
+.hero-1 .hero-1__section-2 .hero-1__text-container .text-container:nth-child(1) h1{
     color: #c4c4c4;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container p{
     font-size: 1.2rem;
     font-weight: 500;
-    color: #707070;
+    color: #808080;
     font-weight: 700;
     margin-bottom: 1rem;
 }

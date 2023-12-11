@@ -7,12 +7,12 @@ import { createSection } from './createSection.js';
     * @example
     * clearColorPicker();
 * */
-function clearColorPicker () {
-  const colorPicker = document.querySelectorAll('.pcr-app');
-  colorPicker.forEach(ele => {
-    ele.remove();
-  });
-}
+// function clearColorPicker () {
+//   const colorPicker = document.querySelectorAll('.pcr-app');
+//   colorPicker.forEach(ele => {
+//     ele.remove();
+//   });
+// }
 
 /**
     * @description editable style
@@ -63,10 +63,10 @@ function toggleEdite () {
     } else {
       window.edit = false;
       this.innerHTML = 'Edit';
-      disableEditText();
       editableStyle();
+      disableEditText();
       createSection();
-      clearColorPicker();
+      // clearColorPicker();
     }
   };
 }
