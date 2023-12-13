@@ -229,7 +229,7 @@ function textEdtingEvent (ele) {
   // input.style.height = `${height}px`;
   input.style.fontSize = `${fontSize}px`;
   input.style.fontWeight = fontWeight;
-  input.style.width = (input.value.length + 10) + 'ch';
+  // input.style.width = (input.value.length + 10) + 'ch';
   input.style.fontFamily = fontFamily;
   // add border
   input.addEventListener('focus', function () {
@@ -238,7 +238,19 @@ function textEdtingEvent (ele) {
     if (input.placeholder == input.value) { input.value = ''; }
   });
   input.addEventListener('input', function () {
-    this.style.width = this.value.length + 'ch';
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+    const maxWidth = parseInt(window.getComputedStyle(this).maxWidth, 10);
+    console.log(maxWidth);
+    console.log(this.offsetWidth);
+    if (this.offsetWidth >= maxWidth) {
+      console.log('overflow');
+      this.style.whiteSpace = 'pre-wrap';
+    } else {
+      this.style.width = 'auto';
+      this.style.width = (this.scrollWidth) + 'px';
+    }
+    // this.style.width = (this.value.length + 3) + 'ch';
     // textEle.innerText = input.value;
   });
   input.addEventListener('blur', function () {

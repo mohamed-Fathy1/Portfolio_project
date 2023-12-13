@@ -10,6 +10,7 @@ body {
 }
 
 .editable {
+    overflowX: clip;
     transition: border-radius 0.2s ease-in-out,
     margin 0.2s ease-in-out;
 }
