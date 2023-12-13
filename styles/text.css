@@ -26,6 +26,7 @@
 }
 
 .text input {
-    outline: 1px solid #000000 !important;
+    outline: 1px dashed #000;
+    width: 100%;
     padding: 10px;
 }
