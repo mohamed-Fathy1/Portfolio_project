@@ -1,5 +1,5 @@
 .hero-1 {
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     display: flex;
     background-color: #F2F2F2;
 }
@@ -46,6 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3rem 0;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__section-2-content {
@@ -67,7 +68,11 @@
     font-weight: 900;
     color: #000;
     line-height: 1.1;
-    width: 100%;
+}
+.hero-1 .hero-1__section-2 .hero-1__text-container .text:has(h1) textarea {
+    width: 600px;
+    min-width: 600px;
+    max-width: 1000px;
 }
 
 .hero-1 .hero-1__section-2 .hero-1__text-container .text-container:nth-child(1) h1{

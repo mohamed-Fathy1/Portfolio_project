@@ -1,4 +1,5 @@
 footer {
+    min-height: 20vh;
     padding: 20px;
     display: flex;
     justify-content: center;
