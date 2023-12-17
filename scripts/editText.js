@@ -1,5 +1,6 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
 import { styleObserver } from './styleObserver.js';
+import { calculateHeight } from './utils/calculateHeight.js';
 
 /**
     * @returns {void}
@@ -237,19 +238,47 @@ function textEdtingEvent (ele) {
     ele.style.borderRadius = '10px';
     if (input.placeholder == input.value) { input.value = ''; }
   });
-  input.addEventListener('input', function () {
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      this.style.whiteSpace = 'pre-wrap';
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+      // this.style.width = 'auto';
+      // this.style.width = this.scrollWidth + 'px';
+    }
+  });
+  input.addEventListener('input', function (e) {
+    const maxWidth = parseInt(window.getComputedStyle(this).maxWidth, 10);
+    // Assuming this code is inside a method or event handler where `this` refers to the element
+    const computedStyle = window.getComputedStyle(this);
+
+    const lines = calculateHeight(this, computedStyle);
+
+    // Now 'lines' contains the total number of lines
+    console.log(lines);
+    const typedKey = e.data || e.inputType;
+    if (typedKey === 'insertLineBreak') {
+      // method to prevent from default behaviour
+      // console.log('aaaaa77777a');
+      // this.style.width = 'auto';
+      // this.style.whiteSpace = 'pre-wrap';
+      // this.style.width = parseInt(window.getComputedStyle(this).maxWidth, 10);
+    } else if (typedKey === 'deleteContentBackward') {
+      // this.style.width = 'auto';
+      // this.style.width = this.scrollWidth + 'px';
+    }
+    //
+    // console.log(this.offsetWidth >= maxWidth);
+    if (this.scrollWidth >= maxWidth) {
+      this.style.whiteSpace = 'pre-wrap';
+      this.style.width = maxWidth + 'px';
+    } else if (lines === 1) {
+      console.log('a');
+      this.style.width = this.scrollWidth + 'px';
+      this.style.wdith = 'auto';
+    }
     this.style.height = 'auto';
     this.style.height = this.scrollHeight + 'px';
-    const maxWidth = parseInt(window.getComputedStyle(this).maxWidth, 10);
-    console.log(maxWidth);
-    console.log(this.offsetWidth);
-    if (this.offsetWidth >= maxWidth) {
-      console.log('overflow');
-      this.style.whiteSpace = 'pre-wrap';
-    } else {
-      this.style.width = 'auto';
-      this.style.width = (this.scrollWidth) + 'px';
-    }
     // this.style.width = (this.value.length + 3) + 'ch';
     // textEle.innerText = input.value;
   });

@@ -20,7 +20,7 @@
     background-color: transparent;
     color: #000;
     height: 100%;
-    min-width: 300px;
+    /* min-width: 300px; */
     max-width: 1000px;
     transition: all 0.15s ease-in-out;
     resize: none;
