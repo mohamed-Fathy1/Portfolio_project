@@ -251,36 +251,27 @@ function textEdtingEvent (ele) {
     // Assuming this code is inside a method or event handler where `this` refers to the element
     const computedStyle = window.getComputedStyle(this);
 
-    const lines = calculateHeight(this, computedStyle);
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
 
     const maxWidth = parseInt(computedStyle.maxWidth, 10);
     // Now 'lines' contains the total number of lines
     const typedKey = e.data || e.inputType;
-    if (typedKey === 'insertLineBreak') {
-      // method to prevent from default behaviour
-      // console.log('aaaaa77777a');
-      // this.style.width = 'auto';
-      // this.style.whiteSpace = 'pre-wrap';
-      // this.style.width = parseInt(window.getComputedStyle(this).maxWidth, 10);
-    } else if (typedKey === 'deleteContentBackward' && lines === 1) {
-      // this.style.width = 'auto';
-      // console.log('aaaaa77777a');
-      this.style.whiteSpace = 'nowrap';
-      console.log(this.offsetWidth);
-      this.style.width = this.offsetWidth + 'px';
-    }
 
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
-    console.log(this.offsetWidth >= maxWidth);
-    if (this.scrollWidth >= maxWidth) {
-      this.style.whiteSpace = 'pre-wrap';
-      this.style.width = maxWidth + 'px';
-    } else if (lines === 1 && typedKey !== 'deleteContentBackward' &&
-               typedKey !== 'insertLineBreak') {
-      console.log('a');
-      this.style.width = 'auto';
-      this.style.width = (this.scrollWidth) + 'px';
+    const lines = calculateHeight(this, computedStyle);
+    if (typedKey === 'deleteContentBackward' && lines === 1) {
+      this.style.whiteSpace = 'nowrap';
+      this.style.width = this.value.length + 'ch';
+    }
+    if (lines === 1 && typedKey !== 'deleteContentBackward' &&
+        typedKey !== 'insertLineBreak') {
+      if (this.scrollWidth >= maxWidth) {
+        this.style.whiteSpace = 'pre-wrap';
+        this.style.width = maxWidth + 'px';
+      } else {
+        this.style.width = 'auto';
+        this.style.width = (this.scrollWidth) + 'px';
+      }
     }
   });
   input.addEventListener('blur', function () {
