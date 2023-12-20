@@ -71,11 +71,14 @@
     line-height: 1.1;
 }
 
-/* .hero-1 .hero-1__section-2 .hero-1__text-container .text textarea { */
-/*     width: 600px; */
-/*     min-width: 600px; */
-/*     max-width: 1000px; */
-/* } */
+.hero-1 .hero-1__section-2 .hero-1__text-container .text textarea {
+    width: 600px;
+    min-width: 600px;
+    max-width: 1000px;
+}
+.hero-1 .hero-1__section-2 .hero-1__text-container .text textarea:has(:placeholder-shown) {
+    max-width: 300px;
+}
 
 .hero-1 .hero-1__section-2 .hero-1__text-container .text-container:nth-child(1) h1{
     color: #c4c4c4;
