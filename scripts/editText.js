@@ -263,7 +263,13 @@ function textEdtingEvent (ele) {
     const lines = calculateHeight(this, computedStyle);
     if (typedKey === 'deleteContentBackward' && lines === 1) {
       this.style.whiteSpace = 'nowrap';
-      this.style.width = this.value.length + 'ch';
+      console.log(this.style.fontSize);
+      const fontSize = parseFloat(computedStyle.fontSize) / 2;
+
+      console.log(fontSize);
+      // Define a multiplier to scale down the font size
+      const fontSizeMultiplier = 0.4;
+      this.style.width = (this.value.length + 1) * fontSize * fontSizeMultiplier + 'px';
     }
     if (lines === 1 && typedKey !== 'deleteContentBackward' &&
         typedKey !== 'insertLineBreak') {
