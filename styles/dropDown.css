@@ -17,11 +17,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-
-.text-container:first-child .costumize-text-dropdown {
-    z-index: 99999;
-}
-
 .costumize-text-dropdown button {
     display: none;
     position: relative;

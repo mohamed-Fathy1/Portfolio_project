@@ -74,10 +74,10 @@
 .hero-1 .hero-1__section-2 .hero-1__text-container textarea {
     width: 600px;
     min-width: 600px;
-    max-width: 1000px;
+    max-width: 900px;
 }
 .hero-1 .hero-1__section-2 .hero-1__text-container .text-container:has(p) textarea {
-    max-width: 300px;
+    max-width: 950px;
     min-width: 200px;
 }
 
