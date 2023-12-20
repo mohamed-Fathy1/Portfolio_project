@@ -89,6 +89,7 @@ function enableEditdropdown () {
   const nextSibling = this.nextElementSibling;
   const parent = this.parentElement;
 
+  parent.style.zIndex = '1000';
   const rect = parent.getBoundingClientRect();
   const spaceBelow = window.innerHeight - rect.bottom;
   const spaceAbove = rect.top;
@@ -165,6 +166,7 @@ function clearEditDropdown (e) {
     if (!btn[i].contains(e.target) && !dropdown[i].contains(e.target) && !parent[i].contains(e.target) && ![...colorPicker].some(ele => ele.contains(e.target))) {
       if (dropdown[i].style.visibility === 'visible') {
         parent[i].style.overflow = 'hidden';
+        parent[i].style.zIndex = '999';
         dropdown[i].style.top = '0%';
         dropdown[i].style.visibility = 'hidden';
         dropdown[i].style.opacity = '0';
