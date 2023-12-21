@@ -203,6 +203,75 @@ function createSections () {
       document.querySelector('header').insertAdjacentHTML('beforeend', hero);
 
       document.querySelector('header').firstElementChild.setAttribute('id', id);
+      document.querySelector('header').lastElementChild.setAttribute('id', id);
+      document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
+      const textHeader1 = document.querySelector('header .hero-1__text-container .text-container:first-child');
+      const textHeader2 = document.querySelector('header .hero-1__text-container .text-container:nth-child(2)');
+      const textParagrph = document.querySelector('header .hero-1__text-container .text-container:last-child');
+      const textComponent = [textHeader1, textHeader2, textParagrph];
+      const textType = ['h1', 'h1', 'p'];
+      textComponent.forEach((text, index) => {
+        const textComponent = createTextComponent(textType[index], text.textContent, text);
+        textEdtingEvent(textComponent);
+      });
+    } else {
+      // create new section element with id
+      const newSection = document.createElement('section');
+      newSection.setAttribute('id', id);
+      newSection.setAttribute('class', 'editable');
+      newSection.innerHTML = `
+            <div class="text-container">
+            </div>
+          `;
+
+      // append new section to main
+      document.querySelector('main').appendChild(newSection);
+      const textComponent = createTextComponent('h1', section, newSection.firstElementChild);
+      textEdtingEvent(textComponent);
+    }
+    console.log(document.querySelectorAll(`#${id} .text-container`));
+    window.portfolio.push({
+      id,
+      type: section,
+      edits: {
+        // get All text-container elements with an id return an object with id and text
+        text: Object.create(null, {
+          value: {
+            value: Array.from(document.querySelectorAll(`#${id} .text-container`)).map(text => ({
+              id: text.id,
+              text: text.firstElementChild.textContent
+            })),
+            writable: true,
+            enumerable: true
+          }
+        })
+      }
+
+    });
+    // console.log(window.portfolio);
+  });
+  editableStyle();
+  localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
+  console.log(JSON.parse(localStorage.getItem('portfolio')));
+}
+
+/**
+    * @description create sections
+    * @returns {void}
+    * @example
+    * createSections();
+* */
+function startCreateSections () {
+  window.portfolio.forEach(section => {
+    // generate new id for section
+    const id = section.id;
+    // get section type
+    const sectionType = section.type;
+    if (section === 'hero') {
+      const hero = components[sectionType]();
+      document.querySelector('header').insertAdjacentHTML('beforeend', hero);
+
+      document.querySelector('header').firstElementChild.setAttribute('id', id);
       document.querySelector('header button.hamburger').addEventListener('click', toggleNavBar);
       const textHeader1 = document.querySelector('header .hero-1__text-container .text-container:first-child');
       const textHeader2 = document.querySelector('header .hero-1__text-container .text-container:nth-child(2)');
@@ -230,6 +299,6 @@ function createSections () {
     }
   });
   editableStyle();
+  localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
 }
-
 export { createSection };
