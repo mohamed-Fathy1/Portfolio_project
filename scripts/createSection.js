@@ -234,14 +234,20 @@ function createSections () {
       id: text.id,
       text: text.firstElementChild.textContent
     }));
-    window.portfolio.push({
+    window.portfolio[`section-${id}`] = {
+      // id: id.split('-').pop(),
       id,
       type: section,
       edits: {
         // get All text-container elements with an id return an object with id and text
-        text: textArray
+        text: {}
       }
-
+    };
+    textContainer.forEach(text => {
+      window.portfolio[`section-${id}`].edits.text[text.id] = {
+        id: text.id,
+        text: text.firstElementChild.textContent
+      };
     });
   });
   editableStyle();
@@ -256,11 +262,12 @@ function createSections () {
 * */
 function startCreateSections () {
   const components = { hero: hero1, about: 0, contact: 0, blog: 0, projects: 0, footer: 0 };
-  window.portfolio.forEach(section => {
+  for (const section in window.portfolio) {
     // generate new id for section
-    const id = section.id;
+
+    const id = window.portfolio[section].id;
     // get section type
-    const sectionType = section.type;
+    const sectionType = window.portfolio[section].type;
     if (sectionType === 'hero') {
       const hero = components[sectionType]();
       document.querySelector('header').insertAdjacentHTML('beforeend', hero);
@@ -274,7 +281,9 @@ function startCreateSections () {
       const textComponent = [textHeader1, textHeader2, textParagrph];
       const textType = ['h1', 'h1', 'p'];
       textComponent.forEach((text, index) => {
-        const textComponent = createTextComponent(textType[index], section.edits.text[index].text, text);
+        console.log(text);
+        console.log(text.id);
+        const textComponent = createTextComponent(textType[index], Object.values(window.portfolio[section].edits.text)[index].text, text);
       });
     } else {
       // create new section element with id
@@ -288,10 +297,11 @@ function startCreateSections () {
 
       // append new section to main
       document.querySelector('main').appendChild(newSection);
-      const textComponent = createTextComponent('h1', section.edits.text[0].text, newSection.firstElementChild);
+      console.log(section);
+      const textComponent = createTextComponent('h1', window.portfolio[section].edits.text[Object.keys(window.portfolio[section].edits.text)[0]].text, newSection.firstElementChild);
       // textEdtingEvent(textComponent);
     }
-  });
+  }
   localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
 }
 export { createSection, startCreateSections };

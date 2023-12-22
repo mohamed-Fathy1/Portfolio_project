@@ -281,6 +281,8 @@ function textEdtingEvent (ele) {
         this.style.width = (this.scrollWidth) + 'px';
       }
     }
+    // save text to window.portfolio
+    window.portfolio[ele.parentElement.id].edits;
   });
   input.addEventListener('blur', function () {
     if (window.edit === true) {
