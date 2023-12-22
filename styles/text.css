@@ -26,8 +26,5 @@
     white-space: nowrap; /* Prevent line breaks */
     overflow-wrap: break-word;
     overflow-y: noscroll;
-}
-
-.text textarea {
     outline: 1px dashed #000;
 }

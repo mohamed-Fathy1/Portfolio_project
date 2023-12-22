@@ -275,7 +275,6 @@ function startCreateSections () {
       const textType = ['h1', 'h1', 'p'];
       textComponent.forEach((text, index) => {
         const textComponent = createTextComponent(textType[index], section.edits.text[index].text, text);
-        textEdtingEvent(textComponent);
       });
     } else {
       // create new section element with id
@@ -290,10 +289,9 @@ function startCreateSections () {
       // append new section to main
       document.querySelector('main').appendChild(newSection);
       const textComponent = createTextComponent('h1', section.edits.text[0].text, newSection.firstElementChild);
-      textEdtingEvent(textComponent);
+      // textEdtingEvent(textComponent);
     }
   });
-  editableStyle();
   localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
 }
 export { createSection, startCreateSections };
