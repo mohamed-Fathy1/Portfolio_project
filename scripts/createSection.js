@@ -281,9 +281,8 @@ function startCreateSections () {
       const textComponent = [textHeader1, textHeader2, textParagrph];
       const textType = ['h1', 'h1', 'p'];
       textComponent.forEach((text, index) => {
-        console.log(text);
-        console.log(text.id);
-        const textComponent = createTextComponent(textType[index], Object.values(window.portfolio[section].edits.text)[index].text, text);
+        const innerText = Object.values(window.portfolio[section].edits.text)[index].text;
+        const textComponent = createTextComponent(textType[index], innerText, text);
       });
     } else {
       // create new section element with id
