@@ -1,8 +1,8 @@
-function backgroundStyleSubDropdown (index, randomId) {
+function backgroundStyleSubDropdown (index, randomId, id) {
   return (`
-                    <div class="text-dropdown-content-sub" id="text-dropdown-content-sub-${index}-${randomId}">
-                        <label for="backgroundColor-${index}-${randomId}">Background Color:</label>
-                        <div class="color-picker" id="backgroundColor-${index}-${randomId}"></div>
+                    <div class="text-dropdown-content-sub" id="text-dropdown-content-sub-${index}-${id}-${randomId}">
+                        <label for="backgroundColor-${index}-${id}-${randomId}">Background Color:</label>
+                        <div class="color-picker" id="backgroundColor-${index}-${id}-${randomId}"></div>
                     </div>
       `);
 }

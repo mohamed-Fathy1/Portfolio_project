@@ -79,16 +79,16 @@ function createTextDropdownComponent (ele) {
     'Text Decoration': textDecorationsSubDropdown
   };
 
-  const randomId = Math.random().toString(36).substr(2, 9);
-  ele.setAttribute('id', `text-container-${randomId}`);
-  ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
+  const id = ele.id.split('-')[2];
+  const randomId = ele.id.split('-')[3];
+  // ele.querySelector('.text').setAttribute('id', `text-${randomId}`);
   const component = `
-    <div id="costumize-text-dropdown-${randomId}" class="costumize-text-dropdown">
+    <div id="costumize-text-dropdown-${id}-${randomId}" class="costumize-text-dropdown">
         <button class="text-dropbtn">Dropdown</button>
         <div class="text-dropdown-content">
             <ul>
                 ${items.map((item, index) => `<li>${item}<i class="fa-solid fa-caret-right"></i>
-                    ${componentDict[item](index, randomId)}
+                    ${componentDict[item](index, randomId, id)}
                 </li>`).join('')}
             </ul>
         </div>
@@ -99,10 +99,10 @@ function createTextDropdownComponent (ele) {
 
   items.forEach((item, index) => {
     // Assuming you want to create a color picker for each element
-    const fontColorId = `#fontColor-${index}-${randomId}`;
-    const backgroundColorId = `#backgroundColor-${index}-${randomId}`;
-    const borderColorId = `#borderColor-${index}-${randomId}`;
-    const textDecorationColorId = `#textDecorationColor-${index}-${randomId}`;
+    const fontColorId = `#fontColor-${index}-${id}-${randomId}`;
+    const backgroundColorId = `#backgroundColor-${index}-${id}-${randomId}`;
+    const borderColorId = `#borderColor-${index}-${id}-${randomId}`;
+    const textDecorationColorId = `#textDecorationColor-${index}-${id}-${randomId}`;
     const colorPickerId = [fontColorId, backgroundColorId, borderColorId, textDecorationColorId];
 
     if (document.querySelector(colorPickerId)) {
@@ -110,7 +110,7 @@ function createTextDropdownComponent (ele) {
 
       const pickr = createColorPicker(item.id);
       const pickrObject = document.querySelector(colorPickerId);
-      const input = document.querySelector(`#text-${randomId}`).lastElementChild;
+      const input = document.querySelector(`#text-${id}-${randomId}`).lastElementChild;
       pickr.on('change', (color, instance) => {
         pickrObject.style.backgroundColor = color.toRGBA().toString();
         const instancID = pickr._root.button.id;

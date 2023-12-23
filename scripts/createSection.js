@@ -197,7 +197,7 @@ function createSections () {
   const components = { hero: hero1, about: 0, contact: 0, blog: 0, projects: 0, footer: 0 };
   currentSelectedSections.forEach(section => {
     // generate new id for section
-    const id = `section-${section}-${generateId()}`;
+    const id = `A${generateId()}`;
     if (section === 'hero') {
       const hero = components[section]();
       document.querySelector('header').insertAdjacentHTML('beforeend', hero);
@@ -212,6 +212,9 @@ function createSections () {
       const textType = ['h1', 'h1', 'p'];
       textComponent.forEach((text, index) => {
         const textComponent = createTextComponent(textType[index], text.textContent, text);
+        const randomId = Math.random().toString(36).substr(2, 9);
+        text.setAttribute('id', `text-container-${id}-${randomId}`);
+        textComponent.setAttribute('id', `text-${id}-${randomId}`);
         textEdtingEvent(textComponent);
       });
     } else {
@@ -219,14 +222,16 @@ function createSections () {
       const newSection = document.createElement('section');
       newSection.setAttribute('id', id);
       newSection.setAttribute('class', 'editable');
+      const randomId = Math.random().toString(36).substr(2, 9);
       newSection.innerHTML = `
-            <div class="text-container">
+            <div class="text-container" id="text-container-${id}-${randomId}">
             </div>
           `;
 
       // append new section to main
       document.querySelector('main').appendChild(newSection);
       const textComponent = createTextComponent('h1', section, newSection.firstElementChild);
+      textComponent.setAttribute('id', `text-${id}-${randomId}`);
       textEdtingEvent(textComponent);
     }
     const textContainer = [...document.querySelectorAll(`#${id} .text-container`)];
@@ -281,26 +286,30 @@ function startCreateSections () {
       const textComponent = [textHeader1, textHeader2, textParagrph];
       const textType = ['h1', 'h1', 'p'];
       textComponent.forEach((text, index) => {
+        const randomId = Object.values(window.portfolio[section].edits.text)[index].id.split('-').pop();
         const innerText = Object.values(window.portfolio[section].edits.text)[index].text;
         const textComponent = createTextComponent(textType[index], innerText, text);
+        text.setAttribute('id', `text-container-${id}-${randomId}`);
+        textComponent.setAttribute('id', `text-${id}-${randomId}`);
       });
     } else {
       // create new section element with id
       const newSection = document.createElement('section');
       newSection.setAttribute('id', id);
       newSection.setAttribute('class', 'editable');
+      const randomId = Object.values(window.portfolio[section].edits.text)[0].id.split('-').pop();
+
       newSection.innerHTML = `
-            <div class="text-container">
+            <div class="text-container" id="text-container-${id}-${randomId}">
             </div>
           `;
 
       // append new section to main
       document.querySelector('main').appendChild(newSection);
-      console.log(section);
       const textComponent = createTextComponent('h1', window.portfolio[section].edits.text[Object.keys(window.portfolio[section].edits.text)[0]].text, newSection.firstElementChild);
+      textComponent.setAttribute('id', `text-${id}-${randomId}`);
       // textEdtingEvent(textComponent);
     }
   }
-  localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
 }
 export { createSection, startCreateSections };

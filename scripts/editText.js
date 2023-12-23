@@ -187,6 +187,8 @@ function clearEditDropdown (e) {
 function toggleEditDropdown (ele) {
   if (ele.nextElementSibling === null) {
     console.log('created');
+    console.log(ele);
+    console.log(ele.parentElement);
     createTextDropdownComponent(ele.parentElement);
   }
   appendOrEnableEditText();
@@ -282,7 +284,8 @@ function textEdtingEvent (ele) {
       }
     }
     // save text to window.portfolio
-    window.portfolio[ele.parentElement.id].edits;
+    console.log(this.parentElement.id);
+    console.log(window.portfolio[this.parentElement.id]);
   });
   input.addEventListener('blur', function () {
     if (window.edit === true) {
