@@ -13,6 +13,7 @@ function changeFontSize (inputElement, randomId, id) {
 function textStyleSubDropdown (index, randomId, id) {
   console.log(randomId);
   console.log(id);
+  console.log(`text-container-${id}-${randomId}`);
   document.getElementById(`text-container-${id}-${randomId}`).addEventListener('change', function (event) {
     const target = event.target;
 
