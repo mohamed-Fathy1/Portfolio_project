@@ -1,8 +1,8 @@
 .costumize-text-dropdown {
     diplsay: none;
     position: absolute;
-    top: -1.5rem;
-    right: -2rem;
+    top: -1.2rem;
+    right: -1.8rem;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
@@ -20,7 +20,7 @@
 .costumize-text-dropdown button {
     display: none;
     position: relative;
-    padding: 10px;
+    padding: 5px 10px;
     border: none;
     outline: none;
     background-color: #fff;
