@@ -2,6 +2,24 @@ import { enableEditText, disableEditText } from './editText.js';
 import { createSection } from './createSection.js';
 
 /**
+    * @description save portfolio
+    * @returns {void}
+    * @example
+    * savePortfolio();
+* */
+function savePortfolio () {
+  let intervalId;
+  intervalId = setInterval(
+    () => {
+      localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
+      if (window.edit === false) {
+        clearInterval(intervalId);
+      }
+    }
+    , 2000);
+}
+
+/**
     * @description clear color picker
     * @returns {void}
     * @example
@@ -66,8 +84,10 @@ function toggleEdite () {
       editableStyle();
       disableEditText();
       createSection();
+      localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
       // clearColorPicker();
     }
+    savePortfolio();
   };
 }
 
