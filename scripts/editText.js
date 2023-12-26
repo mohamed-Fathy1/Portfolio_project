@@ -284,8 +284,11 @@ function textEdtingEvent (ele) {
       }
     }
     // save text to window.portfolio
-    console.log(this.parentElement.id);
-    console.log(window.portfolio[this.parentElement.id]);
+    const id = this.parentElement.id.split('-')[1];
+    const randomId = this.parentElement.id.split('-')[2];
+    console.log(id, randomId);
+    window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text = this.value;
+    console.log(window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text);
   });
   input.addEventListener('blur', function () {
     if (window.edit === true) {
