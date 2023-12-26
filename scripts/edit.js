@@ -11,12 +11,17 @@ function savePortfolio () {
   let intervalId;
   intervalId = setInterval(
     () => {
+      const savePopUp = document.querySelector('.notification-popup');
+      savePopUp.classList.add('show');
+      setTimeout(() => {
+        savePopUp.classList.remove('show');
+      }, 3000);
       localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
       if (window.edit === false) {
         clearInterval(intervalId);
       }
     }
-    , 2000);
+    , 15000);
 }
 
 /**
