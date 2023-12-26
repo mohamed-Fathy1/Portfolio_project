@@ -30,7 +30,13 @@
     background-image: linear-gradient(to right, #f6d365 0%, #f6d365 30%, #fda085 100%);
     border: 2px solid #b3b3b3;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
     /* animation: slide-in 0.5s ease-out; */
+}
+
+.notification-popup.show .notification-popup__container{
+    transform: scale(1) translate(-50%, -50%);
 }
 
 .notification-popup .notification-popup__container .notification-popup__text {

@@ -12,11 +12,9 @@ function saveDelay () {
   //     return;
   //   }
   //   window.timeToSave -= 1000;
-  //   console.log(window.timeToSave);
   // }, 1000);
   window.setTimeout(() => {
     window.timeToSave = 0;
-    console.log('Hii');
     savePortfolio();
   }, 10000);
 }
