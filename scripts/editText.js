@@ -1,6 +1,7 @@
 import { createTextDropdownComponent } from './components/editTextDropdown.js';
 import { styleObserver } from './styleObserver.js';
 import { calculateHeight } from './utils/calculateHeight.js';
+import { saveDelay } from './savePortfolio.js';
 
 /**
     * @returns {void}
@@ -289,6 +290,8 @@ function textEdtingEvent (ele) {
     console.log(id, randomId);
     window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text = this.value;
     console.log(window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text);
+    window.isSaved = false;
+    if (window.timeToSave < 10000) { saveDelay(); }
   });
   input.addEventListener('blur', function () {
     if (window.edit === true) {
@@ -298,6 +301,7 @@ function textEdtingEvent (ele) {
   });
 
   styleObserver.observe(input, { attributes: true, attributeFilter: ['style'] });
+  window.isSaved = true;
 
   textEle.style.display = 'none';
   input.style.display = 'block';

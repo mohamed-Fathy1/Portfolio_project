@@ -1,28 +1,6 @@
 import { enableEditText, disableEditText } from './editText.js';
 import { createSection } from './createSection.js';
-
-/**
-    * @description save portfolio
-    * @returns {void}
-    * @example
-    * savePortfolio();
-* */
-function savePortfolio () {
-  let intervalId;
-  intervalId = setInterval(
-    () => {
-      const savePopUp = document.querySelector('.notification-popup');
-      savePopUp.classList.add('show');
-      setTimeout(() => {
-        savePopUp.classList.remove('show');
-      }, 3000);
-      localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
-      if (window.edit === false) {
-        clearInterval(intervalId);
-      }
-    }
-    , 15000);
-}
+import { savePortfolio } from './savePortfolio.js';
 
 /**
     * @description clear color picker
