@@ -30,7 +30,8 @@ function savePortfolio () {
   let intervalId;
   intervalId = setInterval(
     () => {
-      if (window.isSaved === true || window.timeToSave !== 0) {
+      if ((window.isSaved === true || window.timeToSave !== 0) &&
+          window.edit == true) {
         clearInterval(intervalId);
         return;
       }

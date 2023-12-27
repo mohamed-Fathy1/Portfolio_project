@@ -1,5 +1,6 @@
 import { enableEditText, disableEditText } from './editText.js';
 import { createSection } from './createSection.js';
+import { savePortfolio } from './savePortfolio.js';
 
 /**
     * @description clear color picker
@@ -68,6 +69,7 @@ function toggleEdite () {
       createSection();
       localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
       // clearColorPicker();
+      savePortfolio();
     }
   };
 }
