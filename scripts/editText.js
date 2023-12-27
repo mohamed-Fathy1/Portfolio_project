@@ -3,6 +3,7 @@ import { styleObserver } from './styleObserver.js';
 import { calculateHeight } from './utils/calculateHeight.js';
 import { saveDelay } from './savePortfolio.js';
 
+let intervalId;
 /**
     * @returns {void}
     * @description
@@ -291,7 +292,15 @@ function textEdtingEvent (ele) {
     window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text = this.value;
     console.log(window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text);
     window.isSaved = false;
-    if (window.timeToSave < 10000) { saveDelay(); }
+    window.timeToSave = maxTimeToSave;
+    // console.log(intervalId);
+    // if (intervalId) {
+    //   console.log('clear');
+    //   console.log(intervalId);
+    //   clearInterval(intervalId);
+    // }
+    // window.timeToSave = 10000;
+    if (window.timeToSave === maxTimeToSave) { saveDelay(); }
   });
   input.addEventListener('blur', function () {
     if (window.edit === true) {

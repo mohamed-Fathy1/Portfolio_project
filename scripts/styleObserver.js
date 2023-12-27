@@ -11,7 +11,7 @@ const styleObserver = new MutationObserver(function (mutations) {
   // mutations.forEach(function(mutationRecord) {
   //     console.log('style changed!');
   // });
-  // window.isSaved = false;
+  window.isSaved = false;
 });
 
 export { styleObserver };

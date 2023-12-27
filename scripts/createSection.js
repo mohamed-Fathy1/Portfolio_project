@@ -235,6 +235,7 @@ function createSections () {
       textEdtingEvent(textComponent);
     }
     const textContainer = [...document.querySelectorAll(`#${id} .text-container`)];
+    console.log(textContainer);
     const textArray = textContainer.map(text => ({
       id: text.id,
       text: text.firstElementChild.textContent

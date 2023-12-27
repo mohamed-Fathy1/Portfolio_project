@@ -70,7 +70,7 @@ function toggleEdite () {
       localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
       // clearColorPicker();
     }
-    savePortfolio();
+    // savePortfolio();
   };
 }
 
