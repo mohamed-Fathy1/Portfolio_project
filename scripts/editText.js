@@ -3,7 +3,6 @@ import { styleObserver } from './styleObserver.js';
 import { calculateHeight } from './utils/calculateHeight.js';
 import { saveDelay } from './savePortfolio.js';
 
-let intervalId;
 /**
     * @returns {void}
     * @description
@@ -188,9 +187,6 @@ function clearEditDropdown (e) {
 * */
 function toggleEditDropdown (ele) {
   if (ele.nextElementSibling === null) {
-    console.log('created');
-    console.log(ele);
-    console.log(ele.parentElement);
     createTextDropdownComponent(ele.parentElement);
   }
   appendOrEnableEditText();
@@ -267,10 +263,8 @@ function textEdtingEvent (ele) {
     const lines = calculateHeight(this, computedStyle);
     if (typedKey === 'deleteContentBackward' && lines === 1) {
       this.style.whiteSpace = 'nowrap';
-      console.log(this.style.fontSize);
       const fontSize = parseFloat(computedStyle.fontSize) / 2;
 
-      console.log(fontSize);
       // Define a multiplier to scale down the font size
       const fontSizeMultiplier = 0.4;
       this.style.width = (this.value.length + 1) * fontSize * fontSizeMultiplier + 'px';
@@ -288,18 +282,9 @@ function textEdtingEvent (ele) {
     // save text to window.portfolio
     const id = this.parentElement.id.split('-')[1];
     const randomId = this.parentElement.id.split('-')[2];
-    console.log(id, randomId);
     window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text = this.value;
-    console.log(window.portfolio[`section-${id}`].edits.text[`text-container-${id}-${randomId}`].text);
     window.isSaved = false;
     window.timeToSave = maxTimeToSave;
-    // console.log(intervalId);
-    // if (intervalId) {
-    //   console.log('clear');
-    //   console.log(intervalId);
-    //   clearInterval(intervalId);
-    // }
-    // window.timeToSave = 10000;
     if (window.timeToSave === maxTimeToSave) { saveDelay(); }
   });
   input.addEventListener('blur', function () {

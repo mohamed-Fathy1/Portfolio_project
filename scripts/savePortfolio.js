@@ -7,7 +7,6 @@ let startInterval = false;
 * */
 function saveDelay () {
   if (startInterval === true) {
-    console.log('startInterval');
     return;
   }
   startInterval = true;
@@ -15,19 +14,10 @@ function saveDelay () {
     if (window.timeToSave === 0) {
       clearInterval(intervalId);
       savePortfolio();
-      console.log('saved');
       return;
     }
     window.timeToSave -= 1000;
-    console.log(window.timeToSave);
   }, 1000);
-  // console.log('saveDelay');
-  // console.log(intervalId);
-  // return intervalId;
-  // window.setTimeout(() => {
-  //   window.timeToSave = 0;
-  //   savePortfolio();
-  // }, 10000);
 }
 
 /**
@@ -44,8 +34,6 @@ function savePortfolio () {
         clearInterval(intervalId);
         return;
       }
-      console.log(window.isSaved);
-      console.log('saving');
       const savePopUp = document.querySelector('.notification-popup');
       savePopUp.classList.add('show');
       setTimeout(() => {
