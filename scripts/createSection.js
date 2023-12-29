@@ -3,6 +3,7 @@ import { editableStyle } from './edit.js';
 import { textEdtingEvent } from './editText.js';
 import { hero1 } from './components/hero-1.js';
 import { toggleNavBar } from './navBar.js';
+import { copyStyles } from './utils/copyStyles.js';
 
 const createItems = document.querySelectorAll('.new-section-popup ul li');
 
@@ -252,7 +253,8 @@ function createSections () {
     textContainer.forEach(text => {
       window.portfolio[`section-${id}`].edits.text[text.id] = {
         id: text.id,
-        text: text.firstElementChild.textContent
+        text: text.firstElementChild.textContent,
+        style: window.getComputedStyle(text.firstElementChild).cssText
       };
     });
   });
@@ -289,8 +291,16 @@ function startCreateSections () {
       textComponent.forEach((text, index) => {
         const randomId = Object.values(window.portfolio[section].edits.text)[index].id.split('-').pop();
         const innerText = Object.values(window.portfolio[section].edits.text)[index].text;
+        const textStyle = Object.values(window.portfolio[section].edits.text)[index].style;
         const textComponent = createTextComponent(textType[index], innerText, text);
+        console.log('textStyle');
+        console.log(textStyle);
         text.setAttribute('id', `text-container-${id}-${randomId}`);
+        textComponent.firstElementChild.style.cssText = textStyle;
+        textComponent.lastElementChild.style.cssText = textStyle;
+        textComponent.lastElementChild.style.display = 'none';
+
+        // copyStyles(window.getComputedStyle(textComponent.firstElementChild, textComponent.firstElementChild);
         textComponent.setAttribute('id', `text-${id}-${randomId}`);
       });
     } else {

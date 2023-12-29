@@ -2,6 +2,7 @@ import { createTextDropdownComponent } from './components/editTextDropdown.js';
 import { styleObserver } from './styleObserver.js';
 import { calculateHeight } from './utils/calculateHeight.js';
 import { saveDelay } from './savePortfolio.js';
+import { copyStyles } from './utils/copyStyles.js';
 
 /**
     * @returns {void}
@@ -219,7 +220,7 @@ function textEdtingEvent (ele) {
   // }
   const text = ele.innerText;
   const textEle = ele.firstElementChild;
-  // const height = textEle.offsetHeight;
+  const height = textEle.offsetHeight;
 
   let fontFamily = window.getComputedStyle(textEle, null).getPropertyValue('font-family');
   fontFamily = fontFamily.replace(/['"]+/g, '');
@@ -234,6 +235,9 @@ function textEdtingEvent (ele) {
   input.style.fontWeight = fontWeight;
   // input.style.width = (input.value.length + 10) + 'ch';
   input.style.fontFamily = fontFamily;
+
+  // copyStyles(textEle, input);
+
   // add border
   input.addEventListener('focus', function () {
     ele.style.outline = '2px solid #000';
