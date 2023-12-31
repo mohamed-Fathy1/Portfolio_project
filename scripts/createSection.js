@@ -293,7 +293,6 @@ function startCreateSections () {
         const innerText = Object.values(window.portfolio[section].edits.text)[index].text;
         const textStyle = Object.values(window.portfolio[section].edits.text)[index].style;
         const textComponent = createTextComponent(textType[index], innerText, text);
-        console.log('textStyle');
         console.log(textStyle);
         text.setAttribute('id', `text-container-${id}-${randomId}`);
         textComponent.firstElementChild.style.cssText = textStyle;
