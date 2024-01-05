@@ -5,13 +5,13 @@ import { hero1 } from './components/hero-1.js';
 import { toggleNavBar } from './navBar.js';
 import { copyStyles } from './utils/copyStyles.js';
 
-const createItems = document.querySelectorAll('.new-section-popup ul li');
+const createItems = document.querySelector('.new-section-popup ul');
 
 const currentSelectedSections = [];
 
-createItems.forEach(item => {
-  item.addEventListener('click', (e) => {
-    const input = item.firstElementChild;
+createItems.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI' || e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') {
+    const input = e.target.tagName === 'LI' ? e.target.firstElementChild : e.target.tagName === 'INPUT' ? e.target : e.target.previousElementSibling;
     if (e.target.tagName === 'INPUT') {
       if (input.checked === false) {
         const index = currentSelectedSections.indexOf(input.value);
@@ -35,7 +35,7 @@ createItems.forEach(item => {
         currentSelectedSections.splice(index, 1);
       }
     }
-  });
+  }
 });
 
 /**
@@ -236,7 +236,6 @@ function createSections () {
       textEdtingEvent(textComponent);
     }
     const textContainer = [...document.querySelectorAll(`#${id} .text-container`)];
-    console.log(textContainer);
     const textArray = textContainer.map(text => ({
       id: text.id,
       text: text.firstElementChild.textContent
@@ -293,7 +292,6 @@ function startCreateSections () {
         const innerText = Object.values(window.portfolio[section].edits.text)[index].text;
         const textStyle = Object.values(window.portfolio[section].edits.text)[index].style;
         const textComponent = createTextComponent(textType[index], innerText, text);
-        console.log(textStyle);
         text.setAttribute('id', `text-container-${id}-${randomId}`);
         textComponent.firstElementChild.style.cssText = textStyle;
         textComponent.lastElementChild.style.cssText = textStyle;
