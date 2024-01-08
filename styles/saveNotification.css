@@ -7,6 +7,7 @@
     visibility: hidden;
     width: 100%;
     padding: 20px;
+    margin: 0 auto;
     transition: top 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 .notification-popup.show {

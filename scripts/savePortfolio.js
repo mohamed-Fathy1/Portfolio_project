@@ -40,6 +40,7 @@ function savePortfolio () {
         savePopUp.classList.remove('show');
       }, 3000);
       localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
+      console.log('saving');
       window.isSaved = true;
       window.timeToSave = maxTimeToSave;
       startInterval = false;
