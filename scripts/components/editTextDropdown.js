@@ -97,6 +97,8 @@ function createTextDropdownComponent (ele) {
 
   ele.insertAdjacentHTML('beforeend', component);
 
+  // start benshmark
+  const start = performance.now();
   items.forEach((item, index) => {
     // Assuming you want to create a color picker for each element
     const fontColorId = `#fontColor-${index}-${id}-${randomId}`;
@@ -127,6 +129,9 @@ function createTextDropdownComponent (ele) {
       pickrObject.style.backgroundColor = window.getComputedStyle(input, null).getPropertyValue('color');
     }
   });
+  // end benshmark
+  const end = performance.now();
+  console.log(`createTextDropdownComponent took ${end - start} milliseconds to execute`);
 }
 
 export { createTextDropdownComponent };
