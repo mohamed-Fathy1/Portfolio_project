@@ -1,4 +1,18 @@
 let startInterval = false;
+
+function showSavePopUp () {
+  const savePopUp = document.querySelector('.notification-popup');
+  savePopUp.classList.add('show');
+  setTimeout(() => {
+    savePopUp.classList.remove('show');
+  }, 3000);
+  localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
+  console.log('saving');
+  window.isSaved = true;
+  window.timeToSave = maxTimeToSave;
+  startInterval = false;
+}
+
 /**
     * @description save delay
     * @returns {void}
@@ -30,20 +44,11 @@ function savePortfolio () {
   let intervalId;
   intervalId = setInterval(
     () => {
-      if (window.isSaved === true || (window.timeToSave !== 0 && window.edit === true)) {
+      if (isSaved === true || (timeToSave !== 0 && edit === true)) {
         clearInterval(intervalId);
         return;
       }
-      const savePopUp = document.querySelector('.notification-popup');
-      savePopUp.classList.add('show');
-      setTimeout(() => {
-        savePopUp.classList.remove('show');
-      }, 3000);
-      localStorage.setItem('portfolio', JSON.stringify(window.portfolio));
-      console.log('saving');
-      window.isSaved = true;
-      window.timeToSave = maxTimeToSave;
-      startInterval = false;
+      showSavePopUp();
       if (window.edit === false) {
         clearInterval(intervalId);
       }
@@ -51,4 +56,4 @@ function savePortfolio () {
     , 1000);
 }
 
-export { savePortfolio, saveDelay };
+export { saveDelay, showSavePopUp };
